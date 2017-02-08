@@ -1,0 +1,378 @@
+#################################################
+         ForgeGradle 2.1-SNAPSHOT-da90449        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+:deobfCompileDummyTask
+:deobfProvidedDummyTask
+:getVersionJson
+:extractUserdev UP-TO-DATE
+:extractDependencyATs SKIPPED
+:extractMcpData SKIPPED
+:extractMcpMappings SKIPPED
+:genSrgs SKIPPED
+:downloadClient SKIPPED
+:downloadServer SKIPPED
+:splitServerJar SKIPPED
+:mergeJars SKIPPED
+:deobfMcSRG SKIPPED
+:decompileMc SKIPPED
+:fixMcSources SKIPPED
+:applySourcePatches SKIPPED
+:remapMcSources SKIPPED
+:recompileMc SKIPPED
+:extractNatives SKIPPED
+:getAssetIndex UP-TO-DATE
+:getAssets
+Current status: 149/1049   14%
+Current status: 281/1049   26%
+Current status: 452/1049   43%
+Current status: 561/1049   53%
+Current status: 712/1049   67%
+Current status: 840/1049   80%
+Current status: 881/1049   83%
+:makeStart
+:setupDecompWorkspace
+:AutoPick:deobfCompileDummyTask
+:AutoPick:deobfProvidedDummyTask
+:AutoPick:getVersionJson
+:AutoPick:extractUserdev UP-TO-DATE
+:AutoPick:extractDependencyATs SKIPPED
+:AutoPick:extractMcpData SKIPPED
+:AutoPick:extractMcpMappings SKIPPED
+:AutoPick:genSrgs SKIPPED
+:AutoPick:downloadClient SKIPPED
+:AutoPick:downloadServer SKIPPED
+:AutoPick:splitServerJar SKIPPED
+:AutoPick:mergeJars SKIPPED
+:AutoPick:deobfMcSRG SKIPPED
+:AutoPick:decompileMc SKIPPED
+:AutoPick:fixMcSources SKIPPED
+:AutoPick:applySourcePatches SKIPPED
+:AutoPick:remapMcSources SKIPPED
+:AutoPick:recompileMc SKIPPED
+:AutoPick:extractNatives SKIPPED
+:AutoPick:getAssetIndex UP-TO-DATE
+:AutoPick:getAssets
+Current status: 1038/1049   98%
+:AutoPick:makeStart
+:AutoPick:setupDecompWorkspace
+:ConvenienceBox:deobfCompileDummyTask
+:ConvenienceBox:deobfProvidedDummyTask
+:ConvenienceBox:getVersionJson
+:ConvenienceBox:extractUserdev UP-TO-DATE
+:ConvenienceBox:extractDependencyATs SKIPPED
+:ConvenienceBox:extractMcpData SKIPPED
+:ConvenienceBox:extractMcpMappings SKIPPED
+:ConvenienceBox:genSrgs SKIPPED
+:ConvenienceBox:downloadClient SKIPPED
+:ConvenienceBox:downloadServer SKIPPED
+:ConvenienceBox:splitServerJar SKIPPED
+:ConvenienceBox:mergeJars SKIPPED
+:ConvenienceBox:deobfMcSRG SKIPPED
+:ConvenienceBox:decompileMc SKIPPED
+:ConvenienceBox:fixMcSources SKIPPED
+:ConvenienceBox:applySourcePatches SKIPPED
+:ConvenienceBox:remapMcSources SKIPPED
+:ConvenienceBox:recompileMc SKIPPED
+:ConvenienceBox:extractNatives SKIPPED
+:ConvenienceBox:getAssetIndex UP-TO-DATE
+:ConvenienceBox:getAssets
+Current status: 1045/1049   99%
+:ConvenienceBox:makeStart
+:ConvenienceBox:setupDecompWorkspace
+:DiningFurniture:deobfCompileDummyTask
+:DiningFurniture:deobfProvidedDummyTask
+:DiningFurniture:getVersionJson
+:DiningFurniture:extractUserdev UP-TO-DATE
+:DiningFurniture:extractDependencyATs SKIPPED
+:DiningFurniture:extractMcpData SKIPPED
+:DiningFurniture:extractMcpMappings SKIPPED
+:DiningFurniture:genSrgs SKIPPED
+:DiningFurniture:downloadClient SKIPPED
+:DiningFurniture:downloadServer SKIPPED
+:DiningFurniture:splitServerJar SKIPPED
+:DiningFurniture:mergeJars SKIPPED
+:DiningFurniture:deobfMcSRG SKIPPED
+:DiningFurniture:decompileMc SKIPPED
+:DiningFurniture:fixMcSources SKIPPED
+:DiningFurniture:applySourcePatches SKIPPED
+:DiningFurniture:remapMcSources SKIPPED
+:DiningFurniture:recompileMc SKIPPED
+:DiningFurniture:extractNatives SKIPPED
+:DiningFurniture:getAssetIndex UP-TO-DATE
+:DiningFurniture:getAssets
+Current status: 1048/1049   99%
+:DiningFurniture:makeStart
+:DiningFurniture:setupDecompWorkspace
+:Dools:deobfCompileDummyTask
+:Dools:deobfProvidedDummyTask
+:Dools:getVersionJson
+:Dools:extractUserdev UP-TO-DATE
+:Dools:extractDependencyATs SKIPPED
+:Dools:extractMcpData SKIPPED
+:Dools:extractMcpMappings SKIPPED
+:Dools:genSrgs SKIPPED
+:Dools:downloadClient SKIPPED
+:Dools:downloadServer SKIPPED
+:Dools:splitServerJar SKIPPED
+:Dools:mergeJars SKIPPED
+:Dools:deobfMcSRG SKIPPED
+:Dools:decompileMc SKIPPED
+:Dools:fixMcSources SKIPPED
+:Dools:applySourcePatches SKIPPED
+:Dools:remapMcSources SKIPPED
+:Dools:recompileMc SKIPPED
+:Dools:extractNatives SKIPPED
+:Dools:getAssetIndex UP-TO-DATE
+:Dools:getAssets
+Current status: 1048/1049   99%
+:Dools:makeStart
+:Dools:setupDecompWorkspace
+:ERM:deobfCompileDummyTask
+:ERM:deobfProvidedDummyTask
+:ERM:getVersionJson
+:ERM:extractUserdev UP-TO-DATE
+:ERM:extractDependencyATs SKIPPED
+:ERM:extractMcpData SKIPPED
+:ERM:extractMcpMappings SKIPPED
+:ERM:genSrgs SKIPPED
+:ERM:downloadClient SKIPPED
+:ERM:downloadServer SKIPPED
+:ERM:splitServerJar SKIPPED
+:ERM:mergeJars SKIPPED
+:ERM:deobfMcSRG SKIPPED
+:ERM:decompileMc SKIPPED
+:ERM:fixMcSources SKIPPED
+:ERM:applySourcePatches SKIPPED
+:ERM:remapMcSources SKIPPED
+:ERM:recompileMc SKIPPED
+:ERM:extractNatives SKIPPED
+:ERM:getAssetIndex UP-TO-DATE
+:ERM:getAssets
+Current status: 1048/1049   99%
+:ERM:makeStart
+:ERM:setupDecompWorkspace
+:ExBombs:deobfCompileDummyTask
+:ExBombs:deobfProvidedDummyTask
+:ExBombs:getVersionJson
+:ExBombs:extractUserdev UP-TO-DATE
+:ExBombs:extractDependencyATs SKIPPED
+:ExBombs:extractMcpData SKIPPED
+:ExBombs:extractMcpMappings SKIPPED
+:ExBombs:genSrgs SKIPPED
+:ExBombs:downloadClient SKIPPED
+:ExBombs:downloadServer SKIPPED
+:ExBombs:splitServerJar SKIPPED
+:ExBombs:mergeJars SKIPPED
+:ExBombs:deobfMcSRG SKIPPED
+:ExBombs:decompileMc SKIPPED
+:ExBombs:fixMcSources SKIPPED
+:ExBombs:applySourcePatches SKIPPED
+:ExBombs:remapMcSources SKIPPED
+:ExBombs:recompileMc SKIPPED
+:ExBombs:extractNatives SKIPPED
+:ExBombs:getAssetIndex UP-TO-DATE
+:ExBombs:getAssets
+Current status: 1048/1049   99%
+:ExBombs:makeStart
+:ExBombs:setupDecompWorkspace
+:ExchangeBlock:deobfCompileDummyTask
+:ExchangeBlock:deobfProvidedDummyTask
+:ExchangeBlock:getVersionJson
+:ExchangeBlock:extractUserdev UP-TO-DATE
+:ExchangeBlock:extractDependencyATs SKIPPED
+:ExchangeBlock:extractMcpData SKIPPED
+:ExchangeBlock:extractMcpMappings SKIPPED
+:ExchangeBlock:genSrgs SKIPPED
+:ExchangeBlock:downloadClient SKIPPED
+:ExchangeBlock:downloadServer SKIPPED
+:ExchangeBlock:splitServerJar SKIPPED
+:ExchangeBlock:mergeJars SKIPPED
+:ExchangeBlock:deobfMcSRG SKIPPED
+:ExchangeBlock:decompileMc SKIPPED
+:ExchangeBlock:fixMcSources SKIPPED
+:ExchangeBlock:applySourcePatches SKIPPED
+:ExchangeBlock:remapMcSources SKIPPED
+:ExchangeBlock:recompileMc SKIPPED
+:ExchangeBlock:extractNatives SKIPPED
+:ExchangeBlock:getAssetIndex UP-TO-DATE
+:ExchangeBlock:getAssets
+:ExchangeBlock:makeStart
+:ExchangeBlock:setupDecompWorkspace
+:HPViewer:deobfCompileDummyTask
+:HPViewer:deobfProvidedDummyTask
+:HPViewer:getVersionJson
+:HPViewer:extractUserdev UP-TO-DATE
+:HPViewer:extractDependencyATs SKIPPED
+:HPViewer:extractMcpData SKIPPED
+:HPViewer:extractMcpMappings SKIPPED
+:HPViewer:genSrgs SKIPPED
+:HPViewer:downloadClient SKIPPED
+:HPViewer:downloadServer SKIPPED
+:HPViewer:splitServerJar SKIPPED
+:HPViewer:mergeJars SKIPPED
+:HPViewer:deobfMcSRG SKIPPED
+:HPViewer:decompileMc SKIPPED
+:HPViewer:fixMcSources SKIPPED
+:HPViewer:applySourcePatches SKIPPED
+:HPViewer:remapMcSources SKIPPED
+:HPViewer:recompileMc SKIPPED
+:HPViewer:extractNatives SKIPPED
+:HPViewer:getAssetIndex UP-TO-DATE
+:HPViewer:getAssets
+Current status: 1048/1049   99%
+:HPViewer:makeStart
+:HPViewer:setupDecompWorkspace
+:HavestAll:deobfCompileDummyTask
+:HavestAll:deobfProvidedDummyTask
+:HavestAll:getVersionJson
+:HavestAll:extractUserdev UP-TO-DATE
+:HavestAll:extractDependencyATs SKIPPED
+:HavestAll:extractMcpData SKIPPED
+:HavestAll:extractMcpMappings SKIPPED
+:HavestAll:genSrgs SKIPPED
+:HavestAll:downloadClient SKIPPED
+:HavestAll:downloadServer SKIPPED
+:HavestAll:splitServerJar SKIPPED
+:HavestAll:mergeJars SKIPPED
+:HavestAll:deobfMcSRG SKIPPED
+:HavestAll:decompileMc SKIPPED
+:HavestAll:fixMcSources SKIPPED
+:HavestAll:applySourcePatches SKIPPED
+:HavestAll:remapMcSources SKIPPED
+:HavestAll:recompileMc SKIPPED
+:HavestAll:extractNatives SKIPPED
+:HavestAll:getAssetIndex UP-TO-DATE
+:HavestAll:getAssets
+Current status: 1048/1049   99%
+:HavestAll:makeStart
+:HavestAll:setupDecompWorkspace
+:IceFoods:deobfCompileDummyTask
+:IceFoods:deobfProvidedDummyTask
+:IceFoods:getVersionJson
+:IceFoods:extractUserdev UP-TO-DATE
+:IceFoods:extractDependencyATs SKIPPED
+:IceFoods:extractMcpData SKIPPED
+:IceFoods:extractMcpMappings SKIPPED
+:IceFoods:genSrgs SKIPPED
+:IceFoods:downloadClient SKIPPED
+:IceFoods:downloadServer SKIPPED
+:IceFoods:splitServerJar SKIPPED
+:IceFoods:mergeJars SKIPPED
+:IceFoods:deobfMcSRG SKIPPED
+:IceFoods:decompileMc SKIPPED
+:IceFoods:fixMcSources SKIPPED
+:IceFoods:applySourcePatches SKIPPED
+:IceFoods:remapMcSources SKIPPED
+:IceFoods:recompileMc SKIPPED
+:IceFoods:extractNatives SKIPPED
+:IceFoods:getAssetIndex UP-TO-DATE
+:IceFoods:getAssets
+Current status: 1048/1049   99%
+:IceFoods:makeStart
+:IceFoods:setupDecompWorkspace
+:TestModel:deobfCompileDummyTask
+:TestModel:deobfProvidedDummyTask
+:TestModel:getVersionJson
+:TestModel:extractUserdev UP-TO-DATE
+:TestModel:extractDependencyATs SKIPPED
+:TestModel:extractMcpData SKIPPED
+:TestModel:extractMcpMappings SKIPPED
+:TestModel:genSrgs SKIPPED
+:TestModel:downloadClient SKIPPED
+:TestModel:downloadServer SKIPPED
+:TestModel:splitServerJar SKIPPED
+:TestModel:mergeJars SKIPPED
+:TestModel:deobfMcSRG SKIPPED
+:TestModel:decompileMc SKIPPED
+:TestModel:fixMcSources SKIPPED
+:TestModel:applySourcePatches SKIPPED
+:TestModel:remapMcSources SKIPPED
+:TestModel:recompileMc SKIPPED
+:TestModel:extractNatives SKIPPED
+:TestModel:getAssetIndex UP-TO-DATE
+:TestModel:getAssets
+Current status: 1048/1049   99%
+:TestModel:makeStart
+:TestModel:setupDecompWorkspace
+:eclipseClasspath
+:eclipseJdt
+:eclipseProject
+:makeEclipseCleanRunClient UP-TO-DATE
+:makeEclipseCleanRunServer UP-TO-DATE
+:eclipse
+:AutoPick:eclipseClasspath
+:AutoPick:eclipseJdt
+:AutoPick:eclipseProject
+:AutoPick:makeEclipseCleanRunClient UP-TO-DATE
+:AutoPick:makeEclipseCleanRunServer UP-TO-DATE
+:AutoPick:eclipse
+:ConvenienceBox:eclipseClasspath
+:ConvenienceBox:eclipseJdt
+:ConvenienceBox:eclipseProject
+:ConvenienceBox:makeEclipseCleanRunClient UP-TO-DATE
+:ConvenienceBox:makeEclipseCleanRunServer UP-TO-DATE
+:ConvenienceBox:eclipse
+:DiningFurniture:eclipseClasspath
+:DiningFurniture:eclipseJdt
+:DiningFurniture:eclipseProject
+:DiningFurniture:makeEclipseCleanRunClient UP-TO-DATE
+:DiningFurniture:makeEclipseCleanRunServer UP-TO-DATE
+:DiningFurniture:eclipse
+:Dools:eclipseClasspath
+:Dools:eclipseJdt
+:Dools:eclipseProject
+:Dools:makeEclipseCleanRunClient UP-TO-DATE
+:Dools:makeEclipseCleanRunServer UP-TO-DATE
+:Dools:eclipse
+:ERM:eclipseClasspath
+:ERM:eclipseJdt
+:ERM:eclipseProject
+:ERM:makeEclipseCleanRunClient UP-TO-DATE
+:ERM:makeEclipseCleanRunServer UP-TO-DATE
+:ERM:eclipse
+:ExBombs:eclipseClasspath
+:ExBombs:eclipseJdt
+:ExBombs:eclipseProject
+:ExBombs:makeEclipseCleanRunClient UP-TO-DATE
+:ExBombs:makeEclipseCleanRunServer UP-TO-DATE
+:ExBombs:eclipse
+:ExchangeBlock:eclipseClasspath
+:ExchangeBlock:eclipseJdt
+:ExchangeBlock:eclipseProject
+:ExchangeBlock:makeEclipseCleanRunClient UP-TO-DATE
+:ExchangeBlock:makeEclipseCleanRunServer UP-TO-DATE
+:ExchangeBlock:eclipse
+:HPViewer:eclipseClasspath
+:HPViewer:eclipseJdt
+:HPViewer:eclipseProject
+:HPViewer:makeEclipseCleanRunClient UP-TO-DATE
+:HPViewer:makeEclipseCleanRunServer UP-TO-DATE
+:HPViewer:eclipse
+:HavestAll:eclipseClasspath
+:HavestAll:eclipseJdt
+:HavestAll:eclipseProject
+:HavestAll:makeEclipseCleanRunClient UP-TO-DATE
+:HavestAll:makeEclipseCleanRunServer UP-TO-DATE
+:HavestAll:eclipse
+:IceFoods:eclipseClasspath
+:IceFoods:eclipseJdt
+:IceFoods:eclipseProject
+:IceFoods:makeEclipseCleanRunClient UP-TO-DATE
+:IceFoods:makeEclipseCleanRunServer UP-TO-DATE
+:IceFoods:eclipse
+:TestModel:eclipseClasspath
+:TestModel:eclipseJdt
+:TestModel:eclipseProject
+:TestModel:makeEclipseCleanRunClient UP-TO-DATE
+:TestModel:makeEclipseCleanRunServer UP-TO-DATE
+:TestModel:eclipse
+
+BUILD SUCCESSFUL
+
+Total time: 3 mins 23.486 secs

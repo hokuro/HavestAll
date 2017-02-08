@@ -1,0 +1,21 @@
+[
+{
+    "modid": "HavestAll",
+    "name": "HavestAll",
+    "description": "Break all brock. ",
+    "mcversion": "$mcversion",
+    "version": "$version",
+    "url": "",
+    "updateUrl": "",
+    "authors": [
+        "OhoNou"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [
+    ],
+    "parent":"",
+    "dependencies": [
+    ]
+}
+]
