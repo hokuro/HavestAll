@@ -105,7 +105,7 @@ public class HavestScop implements IHavest  {
 		Packet_Scop p = (Packet_Scop)pkt;
 		MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
 		if (null != server) {
-			World world = server.worldServerForDimension(player.dimension);
+			World world = server.getWorld(player.dimension);
 			if (canDig(player, p)) {
 				breakAll(world, player, p);
 				if (ConfigValue.Scop.AutoCollect) {
@@ -123,7 +123,7 @@ public class HavestScop implements IHavest  {
 		if ((p.itemstack == null) || (p.blockID == null)) {
 			return false;
 		}
-		if ((Blocks.air == p.blockID) || (p.blockID == Blocks.bedrock)) {
+		if ((Blocks.AIR == p.blockID) || (p.blockID == Blocks.BEDROCK)) {
 			return false;
 		}
 		if (player.canHarvestBlock(p.blockID)) {
@@ -140,7 +140,7 @@ public class HavestScop implements IHavest  {
 		if (ConfigValue.Scop.Durability == 1) {
 			for (int i = 0; i < p.count_dig; i++) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, p._pos, player);
-				if (p.itemstack.stackSize == 0) {
+				if (p.itemstack.getCount() == 0) {
 					//player.destroyCurrentEquippedItem();
 					destroyCurrentEquippedItem(player);
 					break;
@@ -214,7 +214,7 @@ public class HavestScop implements IHavest  {
 			}
 			if (ConfigValue.Scop.Durability == 2) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, pos, entityplayer);
-				if (p.itemstack.stackSize == 0) {
+				if (p.itemstack.getCount() == 0) {
 					//entityplayer.destroyCurrentEquippedItem();
 					destroyCurrentEquippedItem(entityplayer);
 					return false;
@@ -251,21 +251,21 @@ public class HavestScop implements IHavest  {
 			Entity entity1 = (Entity) list.get(i);
 			if (((entity1 instanceof EntityItem)) && (!entity1.isDead)) {
 				EntityItem e1 = (EntityItem) entity1;
-				ItemStack e1Item = e1.getEntityItem	();
+				ItemStack e1Item = e1.getItem();
 				int itemDamage = e1Item.getItemDamage();
 				for (int j = i + 1; j < list.size(); j++) {
 					Entity entity2 = (Entity) list.get(j);
 					if (((entity2 instanceof EntityItem)) && (!entity2.isDead)) {
 						EntityItem e2 = (EntityItem) entity2;
-						ItemStack e2Item = e2.getEntityItem();
+						ItemStack e2Item = e2.getItem();
 						int itemDamage1 = e2Item.getItemDamage	();
 						if ((e1Item.getItem() == e2Item.getItem	()) && (itemDamage == itemDamage1)) {
-							e1Item.stackSize += e2Item.stackSize;
+							e1Item.setCount(e1Item.getCount()+e2Item.getCount());
 							entity2.setDead();
 						}
 					}
 				}
-				e1.setEntityItemStack(e1Item);
+				e1.setItem(e1Item);
 			}
 		}
 	}
@@ -299,16 +299,16 @@ public class HavestScop implements IHavest  {
 		if (block1 == null) {
 			return false;
 		}
-		if ((p.flag_Dirt) && ((block1 == Blocks.dirt) || (block1 == Blocks.grass)
-				|| (block1 == Blocks.mycelium) || (block1 == Blocks.farmland))) {
+		if ((p.flag_Dirt) && ((block1 == Blocks.DIRT) || (block1 == Blocks.GRASS)
+				|| (block1 == Blocks.MYCELIUM) || (block1 == Blocks.FARMLAND))) {
 			return true;
 		}
 		return (block1 == p.blockID.getBlock()) && (p.metadata == metadata1);
 	}
 
 	public boolean isDirt(Block blockID) {
-		return (blockID == Blocks.dirt) || (blockID == Blocks.grass)
-				|| (blockID == Blocks.mycelium	) || (blockID == Blocks.farmland);
+		return (blockID == Blocks.DIRT) || (blockID == Blocks.GRASS)
+				|| (blockID == Blocks.MYCELIUM	) || (blockID == Blocks.FARMLAND);
 	}
 
 	@Override

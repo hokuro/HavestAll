@@ -1,5 +1,7 @@
+This mapping 'snapshot_20171003' was designed for MC 1.12! Use at your own peril.
+This mapping 'snapshot_20171003' was designed for MC 1.12! Use at your own peril.
 #################################################
-         ForgeGradle 2.1-SNAPSHOT-da90449        
+         ForgeGradle 2.3-SNAPSHOT-f49079d        
   https://github.com/MinecraftForge/ForgeGradle  
 #################################################
                Powered by MCP unknown               
@@ -21,26 +23,20 @@
 :mergeJars SKIPPED
 :deobfMcSRG SKIPPED
 :decompileMc SKIPPED
-:fixMcSources SKIPPED
-:applySourcePatches SKIPPED
+:fixMcSources
+:applySourcePatches
 :remapMcSources SKIPPED
-:recompileMc SKIPPED
+:recompileMc
 :extractNatives SKIPPED
 :getAssetIndex UP-TO-DATE
 :getAssets
-Current status: 149/1049   14%
-Current status: 281/1049   26%
-Current status: 452/1049   43%
-Current status: 561/1049   53%
-Current status: 712/1049   67%
-Current status: 840/1049   80%
-Current status: 881/1049   83%
+Current status: 871/1283   67%
 :makeStart
 :setupDecompWorkspace
 :AutoPick:deobfCompileDummyTask
 :AutoPick:deobfProvidedDummyTask
 :AutoPick:getVersionJson
-:AutoPick:extractUserdev UP-TO-DATE
+:AutoPick:extractUserdev
 :AutoPick:extractDependencyATs SKIPPED
 :AutoPick:extractMcpData SKIPPED
 :AutoPick:extractMcpMappings SKIPPED
@@ -58,13 +54,13 @@ Current status: 881/1049   83%
 :AutoPick:extractNatives SKIPPED
 :AutoPick:getAssetIndex UP-TO-DATE
 :AutoPick:getAssets
-Current status: 1038/1049   98%
+Current status: 1282/1283   99%
 :AutoPick:makeStart
 :AutoPick:setupDecompWorkspace
 :ConvenienceBox:deobfCompileDummyTask
 :ConvenienceBox:deobfProvidedDummyTask
 :ConvenienceBox:getVersionJson
-:ConvenienceBox:extractUserdev UP-TO-DATE
+:ConvenienceBox:extractUserdev
 :ConvenienceBox:extractDependencyATs SKIPPED
 :ConvenienceBox:extractMcpData SKIPPED
 :ConvenienceBox:extractMcpMappings SKIPPED
@@ -82,13 +78,13 @@ Current status: 1038/1049   98%
 :ConvenienceBox:extractNatives SKIPPED
 :ConvenienceBox:getAssetIndex UP-TO-DATE
 :ConvenienceBox:getAssets
-Current status: 1045/1049   99%
+Current status: 1282/1283   99%
 :ConvenienceBox:makeStart
 :ConvenienceBox:setupDecompWorkspace
 :DiningFurniture:deobfCompileDummyTask
 :DiningFurniture:deobfProvidedDummyTask
 :DiningFurniture:getVersionJson
-:DiningFurniture:extractUserdev UP-TO-DATE
+:DiningFurniture:extractUserdev
 :DiningFurniture:extractDependencyATs SKIPPED
 :DiningFurniture:extractMcpData SKIPPED
 :DiningFurniture:extractMcpMappings SKIPPED
@@ -106,13 +102,12 @@ Current status: 1045/1049   99%
 :DiningFurniture:extractNatives SKIPPED
 :DiningFurniture:getAssetIndex UP-TO-DATE
 :DiningFurniture:getAssets
-Current status: 1048/1049   99%
 :DiningFurniture:makeStart
 :DiningFurniture:setupDecompWorkspace
 :Dools:deobfCompileDummyTask
 :Dools:deobfProvidedDummyTask
 :Dools:getVersionJson
-:Dools:extractUserdev UP-TO-DATE
+:Dools:extractUserdev
 :Dools:extractDependencyATs SKIPPED
 :Dools:extractMcpData SKIPPED
 :Dools:extractMcpMappings SKIPPED
@@ -130,13 +125,12 @@ Current status: 1048/1049   99%
 :Dools:extractNatives SKIPPED
 :Dools:getAssetIndex UP-TO-DATE
 :Dools:getAssets
-Current status: 1048/1049   99%
 :Dools:makeStart
 :Dools:setupDecompWorkspace
 :ERM:deobfCompileDummyTask
 :ERM:deobfProvidedDummyTask
 :ERM:getVersionJson
-:ERM:extractUserdev UP-TO-DATE
+:ERM:extractUserdev
 :ERM:extractDependencyATs SKIPPED
 :ERM:extractMcpData SKIPPED
 :ERM:extractMcpMappings SKIPPED
@@ -154,13 +148,12 @@ Current status: 1048/1049   99%
 :ERM:extractNatives SKIPPED
 :ERM:getAssetIndex UP-TO-DATE
 :ERM:getAssets
-Current status: 1048/1049   99%
 :ERM:makeStart
 :ERM:setupDecompWorkspace
 :ExBombs:deobfCompileDummyTask
 :ExBombs:deobfProvidedDummyTask
 :ExBombs:getVersionJson
-:ExBombs:extractUserdev UP-TO-DATE
+:ExBombs:extractUserdev
 :ExBombs:extractDependencyATs SKIPPED
 :ExBombs:extractMcpData SKIPPED
 :ExBombs:extractMcpMappings SKIPPED
@@ -178,13 +171,12 @@ Current status: 1048/1049   99%
 :ExBombs:extractNatives SKIPPED
 :ExBombs:getAssetIndex UP-TO-DATE
 :ExBombs:getAssets
-Current status: 1048/1049   99%
 :ExBombs:makeStart
 :ExBombs:setupDecompWorkspace
 :ExchangeBlock:deobfCompileDummyTask
 :ExchangeBlock:deobfProvidedDummyTask
 :ExchangeBlock:getVersionJson
-:ExchangeBlock:extractUserdev UP-TO-DATE
+:ExchangeBlock:extractUserdev
 :ExchangeBlock:extractDependencyATs SKIPPED
 :ExchangeBlock:extractMcpData SKIPPED
 :ExchangeBlock:extractMcpMappings SKIPPED
@@ -207,7 +199,7 @@ Current status: 1048/1049   99%
 :HPViewer:deobfCompileDummyTask
 :HPViewer:deobfProvidedDummyTask
 :HPViewer:getVersionJson
-:HPViewer:extractUserdev UP-TO-DATE
+:HPViewer:extractUserdev
 :HPViewer:extractDependencyATs SKIPPED
 :HPViewer:extractMcpData SKIPPED
 :HPViewer:extractMcpMappings SKIPPED
@@ -225,13 +217,12 @@ Current status: 1048/1049   99%
 :HPViewer:extractNatives SKIPPED
 :HPViewer:getAssetIndex UP-TO-DATE
 :HPViewer:getAssets
-Current status: 1048/1049   99%
 :HPViewer:makeStart
 :HPViewer:setupDecompWorkspace
 :HavestAll:deobfCompileDummyTask
 :HavestAll:deobfProvidedDummyTask
 :HavestAll:getVersionJson
-:HavestAll:extractUserdev UP-TO-DATE
+:HavestAll:extractUserdev
 :HavestAll:extractDependencyATs SKIPPED
 :HavestAll:extractMcpData SKIPPED
 :HavestAll:extractMcpMappings SKIPPED
@@ -249,130 +240,32 @@ Current status: 1048/1049   99%
 :HavestAll:extractNatives SKIPPED
 :HavestAll:getAssetIndex UP-TO-DATE
 :HavestAll:getAssets
-Current status: 1048/1049   99%
 :HavestAll:makeStart
 :HavestAll:setupDecompWorkspace
-:IceFoods:deobfCompileDummyTask
-:IceFoods:deobfProvidedDummyTask
-:IceFoods:getVersionJson
-:IceFoods:extractUserdev UP-TO-DATE
-:IceFoods:extractDependencyATs SKIPPED
-:IceFoods:extractMcpData SKIPPED
-:IceFoods:extractMcpMappings SKIPPED
-:IceFoods:genSrgs SKIPPED
-:IceFoods:downloadClient SKIPPED
-:IceFoods:downloadServer SKIPPED
-:IceFoods:splitServerJar SKIPPED
-:IceFoods:mergeJars SKIPPED
-:IceFoods:deobfMcSRG SKIPPED
-:IceFoods:decompileMc SKIPPED
-:IceFoods:fixMcSources SKIPPED
-:IceFoods:applySourcePatches SKIPPED
-:IceFoods:remapMcSources SKIPPED
-:IceFoods:recompileMc SKIPPED
-:IceFoods:extractNatives SKIPPED
-:IceFoods:getAssetIndex UP-TO-DATE
-:IceFoods:getAssets
-Current status: 1048/1049   99%
-:IceFoods:makeStart
-:IceFoods:setupDecompWorkspace
-:TestModel:deobfCompileDummyTask
-:TestModel:deobfProvidedDummyTask
-:TestModel:getVersionJson
-:TestModel:extractUserdev UP-TO-DATE
-:TestModel:extractDependencyATs SKIPPED
-:TestModel:extractMcpData SKIPPED
-:TestModel:extractMcpMappings SKIPPED
-:TestModel:genSrgs SKIPPED
-:TestModel:downloadClient SKIPPED
-:TestModel:downloadServer SKIPPED
-:TestModel:splitServerJar SKIPPED
-:TestModel:mergeJars SKIPPED
-:TestModel:deobfMcSRG SKIPPED
-:TestModel:decompileMc SKIPPED
-:TestModel:fixMcSources SKIPPED
-:TestModel:applySourcePatches SKIPPED
-:TestModel:remapMcSources SKIPPED
-:TestModel:recompileMc SKIPPED
-:TestModel:extractNatives SKIPPED
-:TestModel:getAssetIndex UP-TO-DATE
-:TestModel:getAssets
-Current status: 1048/1049   99%
-:TestModel:makeStart
-:TestModel:setupDecompWorkspace
-:eclipseClasspath
-:eclipseJdt
-:eclipseProject
-:makeEclipseCleanRunClient UP-TO-DATE
-:makeEclipseCleanRunServer UP-TO-DATE
-:eclipse
-:AutoPick:eclipseClasspath
-:AutoPick:eclipseJdt
-:AutoPick:eclipseProject
-:AutoPick:makeEclipseCleanRunClient UP-TO-DATE
-:AutoPick:makeEclipseCleanRunServer UP-TO-DATE
-:AutoPick:eclipse
-:ConvenienceBox:eclipseClasspath
-:ConvenienceBox:eclipseJdt
-:ConvenienceBox:eclipseProject
-:ConvenienceBox:makeEclipseCleanRunClient UP-TO-DATE
-:ConvenienceBox:makeEclipseCleanRunServer UP-TO-DATE
-:ConvenienceBox:eclipse
-:DiningFurniture:eclipseClasspath
-:DiningFurniture:eclipseJdt
-:DiningFurniture:eclipseProject
-:DiningFurniture:makeEclipseCleanRunClient UP-TO-DATE
-:DiningFurniture:makeEclipseCleanRunServer UP-TO-DATE
-:DiningFurniture:eclipse
-:Dools:eclipseClasspath
-:Dools:eclipseJdt
-:Dools:eclipseProject
-:Dools:makeEclipseCleanRunClient UP-TO-DATE
-:Dools:makeEclipseCleanRunServer UP-TO-DATE
-:Dools:eclipse
-:ERM:eclipseClasspath
-:ERM:eclipseJdt
-:ERM:eclipseProject
-:ERM:makeEclipseCleanRunClient UP-TO-DATE
-:ERM:makeEclipseCleanRunServer UP-TO-DATE
-:ERM:eclipse
-:ExBombs:eclipseClasspath
-:ExBombs:eclipseJdt
-:ExBombs:eclipseProject
-:ExBombs:makeEclipseCleanRunClient UP-TO-DATE
-:ExBombs:makeEclipseCleanRunServer UP-TO-DATE
-:ExBombs:eclipse
-:ExchangeBlock:eclipseClasspath
-:ExchangeBlock:eclipseJdt
-:ExchangeBlock:eclipseProject
-:ExchangeBlock:makeEclipseCleanRunClient UP-TO-DATE
-:ExchangeBlock:makeEclipseCleanRunServer UP-TO-DATE
-:ExchangeBlock:eclipse
-:HPViewer:eclipseClasspath
-:HPViewer:eclipseJdt
-:HPViewer:eclipseProject
-:HPViewer:makeEclipseCleanRunClient UP-TO-DATE
-:HPViewer:makeEclipseCleanRunServer UP-TO-DATE
-:HPViewer:eclipse
-:HavestAll:eclipseClasspath
-:HavestAll:eclipseJdt
-:HavestAll:eclipseProject
-:HavestAll:makeEclipseCleanRunClient UP-TO-DATE
-:HavestAll:makeEclipseCleanRunServer UP-TO-DATE
-:HavestAll:eclipse
-:IceFoods:eclipseClasspath
-:IceFoods:eclipseJdt
-:IceFoods:eclipseProject
-:IceFoods:makeEclipseCleanRunClient UP-TO-DATE
-:IceFoods:makeEclipseCleanRunServer UP-TO-DATE
-:IceFoods:eclipse
-:TestModel:eclipseClasspath
-:TestModel:eclipseJdt
-:TestModel:eclipseProject
-:TestModel:makeEclipseCleanRunClient UP-TO-DATE
-:TestModel:makeEclipseCleanRunServer UP-TO-DATE
-:TestModel:eclipse
+:TemperedGlass:deobfCompileDummyTask
+:TemperedGlass:deobfProvidedDummyTask
+:TemperedGlass:getVersionJson
+:TemperedGlass:extractUserdev
+:TemperedGlass:extractDependencyATs SKIPPED
+:TemperedGlass:extractMcpData SKIPPED
+:TemperedGlass:extractMcpMappings SKIPPED
+:TemperedGlass:genSrgs SKIPPED
+:TemperedGlass:downloadClient SKIPPED
+:TemperedGlass:downloadServer SKIPPED
+:TemperedGlass:splitServerJar SKIPPED
+:TemperedGlass:mergeJars SKIPPED
+:TemperedGlass:deobfMcSRG SKIPPED
+:TemperedGlass:decompileMc SKIPPED
+:TemperedGlass:fixMcSources SKIPPED
+:TemperedGlass:applySourcePatches SKIPPED
+:TemperedGlass:remapMcSources SKIPPED
+:TemperedGlass:recompileMc SKIPPED
+:TemperedGlass:extractNatives SKIPPED
+:TemperedGlass:getAssetIndex UP-TO-DATE
+:TemperedGlass:getAssets
+:TemperedGlass:makeStart
+:TemperedGlass:setupDecompWorkspace
 
 BUILD SUCCESSFUL
 
-Total time: 3 mins 23.486 secs
+Total time: 4 mins 0.267 secs

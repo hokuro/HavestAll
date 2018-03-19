@@ -55,7 +55,7 @@ public class McEventHandler{
 		if (!StartMode) {
 			attackHistory.clear();
 		} else {
-			World world = minecraft.theWorld;
+			World world = minecraft.world;
 			if (null != world) {
 				for (Iterator<Packet_HavestBase> i = attackHistory.iterator(); i.hasNext();) {
 					Packet_HavestBase pkt = (Packet_HavestBase) i.next();
@@ -64,23 +64,23 @@ public class McEventHandler{
 					} else {
 						CPacketCustomPayload packet;
 						IBlockState blockID1 = world.getBlockState(pkt._pos);
-						if ((null == blockID1) || (Blocks.air == blockID1.getBlock())) {
+						if ((null == blockID1) || (Blocks.AIR == blockID1.getBlock())) {
 							i.remove();
-							Item tool = (null==minecraft.thePlayer.getHeldItemMainhand())?null:minecraft.thePlayer.getHeldItemMainhand().getItem();
+							Item tool = (null==minecraft.player.getHeldItemMainhand())?null:minecraft.player.getHeldItemMainhand().getItem();
 							try{
 								packet = getHavestInstance(ConfigValue.getToolKind(tool)).getServerPacket(pkt, world);
 							}catch(Exception exe){
 								packet = null;
 							}
 							if (packet != null){
-								minecraft.getNetHandler().addToSendQueue(packet);
+								minecraft.getConnection().sendPacket(packet);
 							}
 						}
 					}
 				}
 			}
 		}
-		if ( minecraft.theWorld != null){
+		if ( minecraft.world != null){
 			// ツールの有効無効処理
 			ToolEnable(minecraft);
 			// ブロックの登録
@@ -90,7 +90,7 @@ public class McEventHandler{
 
 	@SubscribeEvent
 	public void onServerPacket(FMLNetworkEvent.ServerCustomPacketEvent event) {
-		EntityPlayer player = ((NetHandlerPlayServer) event.getHandler()).playerEntity;
+		EntityPlayer player = ((NetHandlerPlayServer) event.getHandler()).player;
 		ItemStack itmstk = player.getHeldItemMainhand();
 		ConfigValue.TOOLS tool;
 		if( (itmstk != null) &&((tool = ConfigValue.getToolKind(itmstk.getItem()))!= ConfigValue.TOOLS.OTHER) ){
@@ -110,7 +110,7 @@ public class McEventHandler{
 				break;
 			}
 
-			p._player = ((NetHandlerPlayServer) event.getHandler()).playerEntity;
+			p._player = ((NetHandlerPlayServer) event.getHandler()).player;
 			p.readPacketData(event.getPacket().payload().array());
 			if (p._player.getDistance(p._pos.getX(), p._pos.getY(), p._pos.getZ()) > 6.0D) {
 				return;
@@ -141,8 +141,8 @@ public class McEventHandler{
 		if (clearHistory) {attackHistory.clear();}
 		if (instance == null){return;}
 
-		World world = FMLClientHandler.instance().getClient().theWorld;
-		EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+		World world = FMLClientHandler.instance().getClient().world;
+		EntityPlayer player = FMLClientHandler.instance().getClient().player;
 		if (null == block) {
 			block = world.getBlockState(pos);
 		}
@@ -181,21 +181,21 @@ public class McEventHandler{
 	@SideOnly(Side.CLIENT)
 	private void ToolEnable(Minecraft minecraft){
 		// ツールの有効無効処理
-		EntityPlayer player = minecraft.thePlayer;
+		EntityPlayer player = minecraft.player;
 		ItemStack itemstk= player.getHeldItemMainhand();
 		ConfigValue.TOOLS tool = (itemstk!=null?ConfigValue.getToolKind(itemstk.getItem()):ConfigValue.TOOLS.OTHER);
 		if (StartMode && ((tool == ConfigValue.TOOLS.OTHER) || (bftool != tool))){
 				StartMode = false;
 				bftool = tool;
-				player.addChatComponentMessage(new TextComponentString("Havest OFF"));
+				player.sendStatusMessage(new TextComponentString("Havest OFF"),false);
 		}else{
 			if (ClientProxy.Press_Key_Enable() && (minecraft.currentScreen == null)
 					&& (tool != ConfigValue.TOOLS.OTHER)){
 				if (flag_change <= 0) {
 					StartMode = !StartMode;
 					bftool = tool;
-					minecraft.thePlayer.addChatComponentMessage(new TextComponentString(
-							"Havest " + (StartMode?"ON":"OFF")));
+					minecraft.player.sendStatusMessage(new TextComponentString(
+							"Havest " + (StartMode?"ON":"OFF")),false);
 					this.flag_change = 10;
 				}
 			}
@@ -208,7 +208,7 @@ public class McEventHandler{
 	@SideOnly(Side.CLIENT)
 	private void BlockRegister(Minecraft minecraft){
 		// ブロックの登録・解除処理
-		EntityPlayer player = minecraft.thePlayer;
+		EntityPlayer player = minecraft.player;
 		ItemStack itemstk= player.getHeldItemMainhand();
 		ConfigValue.TOOLS tool = (itemstk!=null?ConfigValue.getToolKind(itemstk.getItem()):ConfigValue.TOOLS.OTHER);
 
@@ -216,20 +216,20 @@ public class McEventHandler{
 				&& (tool != ConfigValue.TOOLS.OTHER)){
 			if (flag_change2 <= 0) {
 				// プレイヤー座標取得
-		        Vec3d vecPl = new Vec3d(minecraft.thePlayer.prevPosX, minecraft.thePlayer.prevPosY + (double)minecraft.thePlayer.getEyeHeight(), minecraft.thePlayer.prevChasingPosZ);
+		        Vec3d vecPl = new Vec3d(minecraft.player.prevPosX, minecraft.player.prevPosY + (double)minecraft.player.getEyeHeight(), minecraft.player.prevChasingPosZ);
 				// プレイヤー視線ベクトル取得
-		        Vec3d vecEy = minecraft.thePlayer.getLookVec();
+		        Vec3d vecEy = minecraft.player.getLookVec();
 		        // プレイヤー視線座標取得
-				Vec3d vecPs = vecPl.addVector(vecEy.xCoord*6.0D, vecEy.yCoord*6.0D, vecEy.zCoord*6.0D);
+				Vec3d vecPs = vecPl.addVector(vecEy.x*6.0D, vecEy.y*6.0D, vecEy.z*6.0D);
 				// 視線の先のブロックを取得
-				RayTraceResult pos = minecraft.theWorld.rayTraceBlocks(vecPl, vecPs);
+				RayTraceResult pos = minecraft.world.rayTraceBlocks(vecPl, vecPs);
 				if (pos != null && pos.getBlockPos() != null){
-					IBlockState blkste = minecraft.theWorld.getBlockState(pos.getBlockPos());
+					IBlockState blkste = minecraft.world.getBlockState(pos.getBlockPos());
 					if(blkste != null){
 						boolean result = ConfigValue.addOrRemoveBlocks(itemstk.getItem(), blkste);
-						minecraft.thePlayer.addChatComponentMessage(new TextComponentString("Havest " +
+						minecraft.player.sendStatusMessage(new TextComponentString("Havest " +
 						(result?"Add Block ":"Remove Block ") + blkste.getBlock().getRegistryName() +
-						" by tool " + tool.toString()));
+						" by tool " + tool.toString()),false);
 							this.flag_change2 = 10;
 					}
 				}

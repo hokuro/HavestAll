@@ -1,0 +1,9 @@
+mineall,digall,cutallの合成版
+config 
+ 上記各modと同じ
+
+キー
+リスト追加(default:T)
+ 右手に持っているアイテムをリストに追加/削除する
+切替(default:C)
+ modのON/OFFを切り替える

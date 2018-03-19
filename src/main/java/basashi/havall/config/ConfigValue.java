@@ -352,7 +352,7 @@ public class ConfigValue {
 				if(null != b)
 				{
 					if(isBlock){
-						if(Blocks.air != b){
+						if(Blocks.AIR != b){
 							Block block = (Block)b;
 							BlockAndMetadata bam = new BlockAndMetadata(block, convertMetaString(block,metastr));
 							list.add(bam);
@@ -428,7 +428,7 @@ public class ConfigValue {
 					id = "minecraft:" + id;
 					blk = isBlock ? Block.getBlockFromName(id) : Item.getByNameOrId(id);
 				}
-				if ((null != blk) && (Blocks.air != blk)) {
+				if ((null != blk) && (Blocks.AIR != blk)) {
 					lst.add(blk);
 				}
 			}

@@ -84,7 +84,7 @@ public class HavestPickAxe implements IHavest {
 			retpkt._pos = pos;
 			retpkt.blockID = blk;
 			retpkt.metadata = getMetaFromBlockState(blk);
-			if ((retpkt.blockID == Blocks.redstone_ore) || (retpkt.blockID == Blocks.lit_redstone_ore)) {
+			if ((retpkt.blockID == Blocks.REDSTONE_ORE) || (retpkt.blockID == Blocks.LIT_REDSTONE_ORE)) {
 				retpkt.flag_rs = true;
 			}
 			retpkt.nanoTime = System.nanoTime();
@@ -97,7 +97,7 @@ public class HavestPickAxe implements IHavest {
 		MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
 		if (null == server) {
 		}
-		World world = server.worldServerForDimension(player.dimension);
+		World world = server.getWorld(player.dimension);
 		if (!canMine(player, p)) {
 			return;
 		}
@@ -118,7 +118,7 @@ public class HavestPickAxe implements IHavest {
 		if (ConfigValue.PickAxe.Durability == 1) {
 			for (int i = 0; i < p.count_mine; i++) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, p._pos, player);
-				if (p.itemstack.stackSize == 0) {
+				if (p.itemstack.getCount() == 0) {
 					destroyCurrentEquippedItem(player);
 					//player.destroyCurrentEquippedItem();
 					break;
@@ -148,7 +148,7 @@ public class HavestPickAxe implements IHavest {
 			}
 			if (ConfigValue.PickAxe.Durability == 2) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, pos, entityplayer);
-				if (p.itemstack.stackSize == 0) {
+				if (p.itemstack.getCount() == 0) {
 					destroyCurrentEquippedItem(entityplayer);
 					//entityplayer.destroyCurrentEquippedItem();
 					return false;
@@ -165,18 +165,18 @@ public class HavestPickAxe implements IHavest {
 		if ((p.itemstack == null) || (block == null)) {
 			return false;
 		}
-		if (p.itemstack.stackSize <= 0) {
+		if (p.itemstack.getCount() <= 0) {
 			return false;
 		}
-		if ((null == p.blockID) || (Blocks.bedrock == p.blockID.getBlock())) {
+		if ((null == p.blockID) || (Blocks.BEDROCK == p.blockID.getBlock())) {
 			return false;
 		}
 		if (ConfigValue.getToolKind(p.itemstack.getItem()) != ConfigValue.TOOLS.PICKAXE) {
 			return false;
 		}
 		if (p.flag_rs) {
-			return (ConfigValue.CheckHavest(p.itemstack.getItem(), Blocks.redstone_ore.getDefaultState()) ||
-					ConfigValue.CheckHavest(p.itemstack.getItem(), Blocks.lit_redstone_ore.getDefaultState()));
+			return (ConfigValue.CheckHavest(p.itemstack.getItem(), Blocks.REDSTONE_ORE.getDefaultState()) ||
+					ConfigValue.CheckHavest(p.itemstack.getItem(), Blocks.LIT_REDSTONE_ORE.getDefaultState()));
 
 		}
 		return ConfigValue.CheckHavest(p.itemstack.getItem(),p.blockID);
@@ -210,21 +210,21 @@ public class HavestPickAxe implements IHavest {
 			Entity entity1 = (Entity) list.get(i);
 			if (((entity1 instanceof EntityItem)) && (!entity1.isDead)) {
 				EntityItem e1 = (EntityItem) entity1;
-				ItemStack e1Item = e1.getEntityItem();
+				ItemStack e1Item = e1.getItem();
 				int itemDamage = e1Item.getItemDamage();
 				for (int j = i + 1; j < list.size(); j++) {
 					Entity entity2 = (Entity) list.get(j);
 					if (((entity2 instanceof EntityItem)) && (!entity2.isDead)) {
 						EntityItem e2 = (EntityItem) entity2;
-						ItemStack e2Item = e2.getEntityItem();
+						ItemStack e2Item = e2.getItem();
 						int itemDamage1 = e2Item.getItemDamage();
 						if ((e1Item.getItem() == e2Item.getItem()) && (itemDamage == itemDamage1)) {
-							e1Item.stackSize += e2Item.stackSize;
+							e1Item.setCount(e1Item.getCount() +e2Item.getCount());
 							entity2.setDead();
 						}
 					}
 				}
-				e1.setEntityItemStack(e1Item);
+				e1.setItem(e1Item);
 			}
 		}
 	}
@@ -299,7 +299,7 @@ public class HavestPickAxe implements IHavest {
 			if ((block1 != p.blockID.getBlock()) || (p.metadata != l)) {
 				return false;
 			}
-		} else if ((block1 != Blocks.redstone_ore) && (block1 != Blocks.lit_redstone_ore)) {
+		} else if ((block1 != Blocks.REDSTONE_ORE) && (block1 != Blocks.LIT_REDSTONE_ORE)) {
 			return false;
 		}
 		return true;
