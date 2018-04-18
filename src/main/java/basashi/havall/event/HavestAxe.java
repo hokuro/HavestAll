@@ -102,7 +102,7 @@ public class HavestAxe implements IHavest{
 						ItemStack e2Item = e2.getItem();
 						int itemDamage1 = e2Item.getItemDamage();
 						if ((e1Item.getItem() == e2Item.getItem()) && (itemDamage == itemDamage1)) {
-							e1Item.setCount(e1Item.getCount()+e1Item.getCount());
+							e1Item.grow(e2Item.getCount());
 							entity2.setDead();
 						}
 					}
