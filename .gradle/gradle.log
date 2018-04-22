@@ -1,271 +1,229 @@
 This mapping 'snapshot_20171003' was designed for MC 1.12! Use at your own peril.
 This mapping 'snapshot_20171003' was designed for MC 1.12! Use at your own peril.
 #################################################
-         ForgeGradle 2.3-SNAPSHOT-f49079d        
+         ForgeGradle 2.3-SNAPSHOT-47fb5dc        
   https://github.com/MinecraftForge/ForgeGradle  
 #################################################
-               Powered by MCP unknown               
+                 Powered by MCP                  
              http://modcoderpack.com             
-         by: Searge, ProfMobius, Fesh0r,         
-         R4wk, ZeuX, IngisKahn, bspkrs           
+     by: Searge, ProfMobius, R4wk, ZeuX          
+     Fesh0r, IngisKahn, bspkrs, LexManos         
 #################################################
-:deobfCompileDummyTask
-:deobfProvidedDummyTask
-:getVersionJson
-:extractUserdev UP-TO-DATE
-:extractDependencyATs SKIPPED
-:extractMcpData SKIPPED
-:extractMcpMappings SKIPPED
-:genSrgs SKIPPED
-:downloadClient SKIPPED
-:downloadServer SKIPPED
-:splitServerJar SKIPPED
-:mergeJars SKIPPED
-:deobfMcSRG SKIPPED
-:decompileMc SKIPPED
-:fixMcSources
-:applySourcePatches
-:remapMcSources SKIPPED
-:recompileMc
-:extractNatives SKIPPED
-:getAssetIndex UP-TO-DATE
-:getAssets
-Current status: 871/1283   67%
-:makeStart
-:setupDecompWorkspace
-:AutoPick:deobfCompileDummyTask
-:AutoPick:deobfProvidedDummyTask
-:AutoPick:getVersionJson
-:AutoPick:extractUserdev
-:AutoPick:extractDependencyATs SKIPPED
-:AutoPick:extractMcpData SKIPPED
-:AutoPick:extractMcpMappings SKIPPED
-:AutoPick:genSrgs SKIPPED
-:AutoPick:downloadClient SKIPPED
-:AutoPick:downloadServer SKIPPED
-:AutoPick:splitServerJar SKIPPED
-:AutoPick:mergeJars SKIPPED
-:AutoPick:deobfMcSRG SKIPPED
-:AutoPick:decompileMc SKIPPED
-:AutoPick:fixMcSources SKIPPED
-:AutoPick:applySourcePatches SKIPPED
-:AutoPick:remapMcSources SKIPPED
-:AutoPick:recompileMc SKIPPED
-:AutoPick:extractNatives SKIPPED
-:AutoPick:getAssetIndex UP-TO-DATE
-:AutoPick:getAssets
-Current status: 1282/1283   99%
-:AutoPick:makeStart
-:AutoPick:setupDecompWorkspace
-:ConvenienceBox:deobfCompileDummyTask
-:ConvenienceBox:deobfProvidedDummyTask
-:ConvenienceBox:getVersionJson
-:ConvenienceBox:extractUserdev
-:ConvenienceBox:extractDependencyATs SKIPPED
-:ConvenienceBox:extractMcpData SKIPPED
-:ConvenienceBox:extractMcpMappings SKIPPED
-:ConvenienceBox:genSrgs SKIPPED
-:ConvenienceBox:downloadClient SKIPPED
-:ConvenienceBox:downloadServer SKIPPED
-:ConvenienceBox:splitServerJar SKIPPED
-:ConvenienceBox:mergeJars SKIPPED
-:ConvenienceBox:deobfMcSRG SKIPPED
-:ConvenienceBox:decompileMc SKIPPED
-:ConvenienceBox:fixMcSources SKIPPED
-:ConvenienceBox:applySourcePatches SKIPPED
-:ConvenienceBox:remapMcSources SKIPPED
-:ConvenienceBox:recompileMc SKIPPED
-:ConvenienceBox:extractNatives SKIPPED
-:ConvenienceBox:getAssetIndex UP-TO-DATE
-:ConvenienceBox:getAssets
-Current status: 1282/1283   99%
-:ConvenienceBox:makeStart
-:ConvenienceBox:setupDecompWorkspace
-:DiningFurniture:deobfCompileDummyTask
-:DiningFurniture:deobfProvidedDummyTask
-:DiningFurniture:getVersionJson
-:DiningFurniture:extractUserdev
-:DiningFurniture:extractDependencyATs SKIPPED
-:DiningFurniture:extractMcpData SKIPPED
-:DiningFurniture:extractMcpMappings SKIPPED
-:DiningFurniture:genSrgs SKIPPED
-:DiningFurniture:downloadClient SKIPPED
-:DiningFurniture:downloadServer SKIPPED
-:DiningFurniture:splitServerJar SKIPPED
-:DiningFurniture:mergeJars SKIPPED
-:DiningFurniture:deobfMcSRG SKIPPED
-:DiningFurniture:decompileMc SKIPPED
-:DiningFurniture:fixMcSources SKIPPED
-:DiningFurniture:applySourcePatches SKIPPED
-:DiningFurniture:remapMcSources SKIPPED
-:DiningFurniture:recompileMc SKIPPED
-:DiningFurniture:extractNatives SKIPPED
-:DiningFurniture:getAssetIndex UP-TO-DATE
-:DiningFurniture:getAssets
-:DiningFurniture:makeStart
-:DiningFurniture:setupDecompWorkspace
-:Dools:deobfCompileDummyTask
-:Dools:deobfProvidedDummyTask
-:Dools:getVersionJson
-:Dools:extractUserdev
-:Dools:extractDependencyATs SKIPPED
-:Dools:extractMcpData SKIPPED
-:Dools:extractMcpMappings SKIPPED
-:Dools:genSrgs SKIPPED
-:Dools:downloadClient SKIPPED
-:Dools:downloadServer SKIPPED
-:Dools:splitServerJar SKIPPED
-:Dools:mergeJars SKIPPED
-:Dools:deobfMcSRG SKIPPED
-:Dools:decompileMc SKIPPED
-:Dools:fixMcSources SKIPPED
-:Dools:applySourcePatches SKIPPED
-:Dools:remapMcSources SKIPPED
-:Dools:recompileMc SKIPPED
-:Dools:extractNatives SKIPPED
-:Dools:getAssetIndex UP-TO-DATE
-:Dools:getAssets
-:Dools:makeStart
-:Dools:setupDecompWorkspace
-:ERM:deobfCompileDummyTask
-:ERM:deobfProvidedDummyTask
-:ERM:getVersionJson
-:ERM:extractUserdev
-:ERM:extractDependencyATs SKIPPED
-:ERM:extractMcpData SKIPPED
-:ERM:extractMcpMappings SKIPPED
-:ERM:genSrgs SKIPPED
-:ERM:downloadClient SKIPPED
-:ERM:downloadServer SKIPPED
-:ERM:splitServerJar SKIPPED
-:ERM:mergeJars SKIPPED
-:ERM:deobfMcSRG SKIPPED
-:ERM:decompileMc SKIPPED
-:ERM:fixMcSources SKIPPED
-:ERM:applySourcePatches SKIPPED
-:ERM:remapMcSources SKIPPED
-:ERM:recompileMc SKIPPED
-:ERM:extractNatives SKIPPED
-:ERM:getAssetIndex UP-TO-DATE
-:ERM:getAssets
-:ERM:makeStart
-:ERM:setupDecompWorkspace
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\__root\src\api\resources', not found
+Evaluating project ':AutoPick' using build file 'E:\Programs\Minecraft\forge-1.12.2\AutoPick\build.gradle'.
+Compiling build file 'E:\Programs\Minecraft\forge-1.12.2\AutoPick\build.gradle' using BuildScriptTransformer.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\AutoPick\AutoPick', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\AutoPick\src\api\resources', not found
+Evaluating project ':ConvenienceMechanical' using build file 'E:\Programs\Minecraft\forge-1.12.2\ConvenienceMechanical\build.gradle'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ConvenienceMechanical\ConvenienceMechanical', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ConvenienceMechanical\src\api\resources', not found
+Evaluating project ':DiningFurniture' using build file 'E:\Programs\Minecraft\forge-1.12.2\DiningFurniture\build.gradle'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\DiningFurniture\DiningFurniture', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\DiningFurniture\src\api\resources', not found
+Evaluating project ':Dools' using build file 'E:\Programs\Minecraft\forge-1.12.2\Dools\build.gradle'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\Dools\Dools', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\Dools\src\api\resources', not found
+Evaluating project ':ExBombs' using build file 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\build.gradle'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\ExBombs', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\src\api\resources', not found
+Evaluating project ':ExchangeBlock' using build file 'E:\Programs\Minecraft\forge-1.12.2\ExchangeBlock\build.gradle'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExchangeBlock\ExchangeBlock', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExchangeBlock\src\api\resources', not found
+Evaluating project ':HPViewer' using build file 'E:\Programs\Minecraft\forge-1.12.2\HPViewer\build.gradle'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\HPViewer\HPViewer', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\HPViewer\src\api\resources', not found
+Evaluating project ':HavestAll' using build file 'E:\Programs\Minecraft\forge-1.12.2\HavestAll\build.gradle'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\HavestAll\HavestAll', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\HavestAll\src\api\resources', not found
+Evaluating project ':MeetBlocks' using build file 'E:\Programs\Minecraft\forge-1.12.2\MeetBlocks\build.gradle'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\MeetBlocks\MeetBlocks', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\MeetBlocks\src\api\resources', not found
+All projects evaluated.
+Selected primary task ':ExBombs:build' from project :ExBombs
+Tasks to be executed: [task ':ExBombs:deobfCompileDummyTask', task ':ExBombs:deobfProvidedDummyTask', task ':ExBombs:sourceApiJava', task ':ExBombs:compileApiJava', task ':ExBombs:processApiResources', task ':ExBombs:apiClasses', task ':ExBombs:sourceMainJava', task ':ExBombs:compileJava', task ':ExBombs:processResources', task ':ExBombs:classes', task ':ExBombs:jar', task ':ExBombs:sourceTestJava', task ':ExBombs:compileTestJava', task ':ExBombs:processTestResources', task ':ExBombs:testClasses', task ':ExBombs:test', task ':ExBombs:extractMcpData', task ':ExBombs:extractMcpMappings', task ':ExBombs:getVersionJson', task ':ExBombs:extractUserdev', task ':ExBombs:genSrgs', task ':ExBombs:reobfJar', task ':ExBombs:extractAnnotationsJar', task ':ExBombs:extractRangemapReplacedMain', task ':ExBombs:retromapReplacedMain', task ':ExBombs:sourceJar', task ':ExBombs:assemble', task ':ExBombs:check', task ':ExBombs:build']
+Creating In-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\fileHashes.bin: MaxSize{1358400}
+Creating In-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\treeSnapshots.bin: MaxSize{67900}
+Creating In-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\treeSnapshotUsage.bin: MaxSize{67900}
+Creating In-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\fileSnapshotsToTreeSnapshotsIndex.bin: MaxSize{33900}
+Creating In-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\fileSnapshots.bin: MaxSize{33900}
+Creating In-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\taskArtifacts.bin: MaxSize{6700}
+:ExBombs:deobfCompileDummyTask (Thread[Daemon worker,5,main]) started.
 :ExBombs:deobfCompileDummyTask
+Executing task ':ExBombs:deobfCompileDummyTask' (up-to-date check took 0.001 secs) due to:
+  Task has not declared any outputs.
+:ExBombs:deobfCompileDummyTask (Thread[Daemon worker,5,main]) completed. Took 0.014 secs.
+:ExBombs:deobfProvidedDummyTask (Thread[Daemon worker,5,main]) started.
 :ExBombs:deobfProvidedDummyTask
-:ExBombs:getVersionJson
-:ExBombs:extractUserdev
-:ExBombs:extractDependencyATs SKIPPED
+Executing task ':ExBombs:deobfProvidedDummyTask' (up-to-date check took 0.0 secs) due to:
+  Task has not declared any outputs.
+:ExBombs:deobfProvidedDummyTask (Thread[Daemon worker,5,main]) completed. Took 0.005 secs.
+:ExBombs:sourceApiJava (Thread[Daemon worker,5,main]) started.
+:ExBombs:sourceApiJava
+Invalidating in-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\treeSnapshotUsage.bin
+Invalidating in-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\fileHashes.bin
+Invalidating in-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\treeSnapshots.bin
+Invalidating in-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\fileSnapshots.bin
+Invalidating in-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\fileSnapshotsToTreeSnapshotsIndex.bin
+Invalidating in-memory cache of E:\Programs\Minecraft\forge-1.12.2\__root\.gradle\2.14\taskArtifacts\taskArtifacts.bin
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\src\api\java', not found
+Executing task ':ExBombs:sourceApiJava' (up-to-date check took 0.057 secs) due to:
+  No history is available.
+:ExBombs:sourceApiJava (Thread[Daemon worker,5,main]) completed. Took 0.132 secs.
+:ExBombs:compileApiJava (Thread[Daemon worker,5,main]) started.
+:ExBombs:compileApiJava
+Skipping task ':ExBombs:compileApiJava' as it has no source files.
+:ExBombs:compileApiJava UP-TO-DATE
+:ExBombs:compileApiJava (Thread[Daemon worker,5,main]) completed. Took 0.003 secs.
+:ExBombs:processApiResources (Thread[Daemon worker,5,main]) started.
+:ExBombs:processApiResources
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\src\api\resources', not found
+Skipping task ':ExBombs:processApiResources' as it has no source files.
+:ExBombs:processApiResources UP-TO-DATE
+:ExBombs:processApiResources (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
+:ExBombs:apiClasses (Thread[Daemon worker,5,main]) started.
+:ExBombs:apiClasses
+Skipping task ':ExBombs:apiClasses' as it has no actions.
+:ExBombs:apiClasses UP-TO-DATE
+:ExBombs:apiClasses (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+:ExBombs:sourceMainJava (Thread[Daemon worker,5,main]) started.
+:ExBombs:sourceMainJava
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\ExBombs', not found
+Executing task ':ExBombs:sourceMainJava' (up-to-date check took 0.011 secs) due to:
+  No history is available.
+:ExBombs:sourceMainJava (Thread[Daemon worker,5,main]) completed. Took 0.276 secs.
+:ExBombs:compileJava (Thread[Daemon worker,5,main]) started.
+:ExBombs:compileJava
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\libs', not found
+Resource missing. [HTTP GET: http://files.minecraftforge.net/maven/net/minecraftforge/forgeSrc/1.12.2-14.23.3.2655/forgeSrc-1.12.2-14.23.3.2655.pom]
+Resource missing. [HTTP HEAD: http://files.minecraftforge.net/maven/net/minecraftforge/forgeSrc/1.12.2-14.23.3.2655/forgeSrc-1.12.2-14.23.3.2655.jar]
+Resource missing. [HTTP GET: https://repo1.maven.org/maven2/net/minecraftforge/forgeSrc/1.12.2-14.23.3.2655/forgeSrc-1.12.2-14.23.3.2655.pom]
+Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/net/minecraftforge/forgeSrc/1.12.2-14.23.3.2655/forgeSrc-1.12.2-14.23.3.2655.jar]
+Resource missing. [HTTP GET: https://libraries.minecraft.net/net/minecraftforge/forgeSrc/1.12.2-14.23.3.2655/forgeSrc-1.12.2-14.23.3.2655.pom]
+Resource missing. [HTTP HEAD: https://libraries.minecraft.net/net/minecraftforge/forgeSrc/1.12.2-14.23.3.2655/forgeSrc-1.12.2-14.23.3.2655.jar]
+Executing task ':ExBombs:compileJava' (up-to-date check took 2.407 secs) due to:
+  No history is available.
+All input files are considered out-of-date for incremental task ':ExBombs:compileJava'.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\libs', not found
+Compiling with JDK Java compiler API.
+注意:一部の入力ファイルは非推奨のAPIを使用またはオーバーライドしています。
+注意:詳細は、-Xlint:deprecationオプションを指定して再コンパイルしてください。
+注意:入力ファイルの操作のうち、未チェックまたは安全ではないものがあります。
+注意:詳細は、-Xlint:uncheckedオプションを指定して再コンパイルしてください。
+:ExBombs:compileJava (Thread[Daemon worker,5,main]) completed. Took 6.504 secs.
+:ExBombs:processResources (Thread[Daemon worker,5,main]) started.
+:ExBombs:processResources
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\ExBombs', not found
+Executing task ':ExBombs:processResources' (up-to-date check took 0.062 secs) due to:
+  No history is available.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\ExBombs', not found
+:ExBombs:processResources (Thread[Daemon worker,5,main]) completed. Took 0.645 secs.
+:ExBombs:classes (Thread[Daemon worker,5,main]) started.
+:ExBombs:classes
+Skipping task ':ExBombs:classes' as it has no actions.
+:ExBombs:classes (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+:ExBombs:jar (Thread[Daemon worker,5,main]) started.
+:ExBombs:jar
+Executing task ':ExBombs:jar' (up-to-date check took 0.001 secs) due to:
+  No history is available.
+:ExBombs:jar (Thread[Daemon worker,5,main]) completed. Took 0.211 secs.
+:ExBombs:sourceTestJava (Thread[Daemon worker,5,main]) started.
+:ExBombs:sourceTestJava
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\src\test\java', not found
+Executing task ':ExBombs:sourceTestJava' (up-to-date check took 0.001 secs) due to:
+  No history is available.
+:ExBombs:sourceTestJava (Thread[Daemon worker,5,main]) completed. Took 0.007 secs.
+:ExBombs:compileTestJava (Thread[Daemon worker,5,main]) started.
+:ExBombs:compileTestJava
+Skipping task ':ExBombs:compileTestJava' as it has no source files.
+:ExBombs:compileTestJava UP-TO-DATE
+:ExBombs:compileTestJava (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
+:ExBombs:processTestResources (Thread[Daemon worker,5,main]) started.
+:ExBombs:processTestResources
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\src\test\resources', not found
+Skipping task ':ExBombs:processTestResources' as it has no source files.
+:ExBombs:processTestResources UP-TO-DATE
+:ExBombs:processTestResources (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
+:ExBombs:testClasses (Thread[Daemon worker,5,main]) started.
+:ExBombs:testClasses
+Skipping task ':ExBombs:testClasses' as it has no actions.
+:ExBombs:testClasses UP-TO-DATE
+:ExBombs:testClasses (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+:ExBombs:test (Thread[Daemon worker,5,main]) started.
+:ExBombs:test
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\build\classes\test', not found
+Skipping task ':ExBombs:test' as it has no source files.
+:ExBombs:test UP-TO-DATE
+:ExBombs:test (Thread[Daemon worker,5,main]) completed. Took 0.002 secs.
+:ExBombs:extractMcpData (Thread[Daemon worker,5,main]) started.
+:ExBombs:extractMcpData
+Skipping task ':ExBombs:extractMcpData' as task onlyIf is false.
 :ExBombs:extractMcpData SKIPPED
+:ExBombs:extractMcpData (Thread[Daemon worker,5,main]) completed. Took 0.239 secs.
+:ExBombs:extractMcpMappings (Thread[Daemon worker,5,main]) started.
+:ExBombs:extractMcpMappings
+Skipping task ':ExBombs:extractMcpMappings' as task onlyIf is false.
 :ExBombs:extractMcpMappings SKIPPED
+:ExBombs:extractMcpMappings (Thread[Daemon worker,5,main]) completed. Took 0.223 secs.
+:ExBombs:getVersionJson (Thread[Daemon worker,5,main]) started.
+:ExBombs:getVersionJson
+Executing task ':ExBombs:getVersionJson' (up-to-date check took 0.006 secs) due to:
+  Task.upToDateWhen is false.
+:ExBombs:getVersionJson (Thread[Daemon worker,5,main]) completed. Took 0.09 secs.
+:ExBombs:extractUserdev (Thread[Daemon worker,5,main]) started.
+:ExBombs:extractUserdev
+Skipping task ':ExBombs:extractUserdev' as it is up-to-date (took 0.03 secs).
+:ExBombs:extractUserdev UP-TO-DATE
+:ExBombs:extractUserdev (Thread[Daemon worker,5,main]) completed. Took 0.032 secs.
+:ExBombs:genSrgs (Thread[Daemon worker,5,main]) started.
+:ExBombs:genSrgs
+Skipping task ':ExBombs:genSrgs' as task onlyIf is false.
 :ExBombs:genSrgs SKIPPED
-:ExBombs:downloadClient SKIPPED
-:ExBombs:downloadServer SKIPPED
-:ExBombs:splitServerJar SKIPPED
-:ExBombs:mergeJars SKIPPED
-:ExBombs:deobfMcSRG SKIPPED
-:ExBombs:decompileMc SKIPPED
-:ExBombs:fixMcSources SKIPPED
-:ExBombs:applySourcePatches SKIPPED
-:ExBombs:remapMcSources SKIPPED
-:ExBombs:recompileMc SKIPPED
-:ExBombs:extractNatives SKIPPED
-:ExBombs:getAssetIndex UP-TO-DATE
-:ExBombs:getAssets
-:ExBombs:makeStart
-:ExBombs:setupDecompWorkspace
-:ExchangeBlock:deobfCompileDummyTask
-:ExchangeBlock:deobfProvidedDummyTask
-:ExchangeBlock:getVersionJson
-:ExchangeBlock:extractUserdev
-:ExchangeBlock:extractDependencyATs SKIPPED
-:ExchangeBlock:extractMcpData SKIPPED
-:ExchangeBlock:extractMcpMappings SKIPPED
-:ExchangeBlock:genSrgs SKIPPED
-:ExchangeBlock:downloadClient SKIPPED
-:ExchangeBlock:downloadServer SKIPPED
-:ExchangeBlock:splitServerJar SKIPPED
-:ExchangeBlock:mergeJars SKIPPED
-:ExchangeBlock:deobfMcSRG SKIPPED
-:ExchangeBlock:decompileMc SKIPPED
-:ExchangeBlock:fixMcSources SKIPPED
-:ExchangeBlock:applySourcePatches SKIPPED
-:ExchangeBlock:remapMcSources SKIPPED
-:ExchangeBlock:recompileMc SKIPPED
-:ExchangeBlock:extractNatives SKIPPED
-:ExchangeBlock:getAssetIndex UP-TO-DATE
-:ExchangeBlock:getAssets
-:ExchangeBlock:makeStart
-:ExchangeBlock:setupDecompWorkspace
-:HPViewer:deobfCompileDummyTask
-:HPViewer:deobfProvidedDummyTask
-:HPViewer:getVersionJson
-:HPViewer:extractUserdev
-:HPViewer:extractDependencyATs SKIPPED
-:HPViewer:extractMcpData SKIPPED
-:HPViewer:extractMcpMappings SKIPPED
-:HPViewer:genSrgs SKIPPED
-:HPViewer:downloadClient SKIPPED
-:HPViewer:downloadServer SKIPPED
-:HPViewer:splitServerJar SKIPPED
-:HPViewer:mergeJars SKIPPED
-:HPViewer:deobfMcSRG SKIPPED
-:HPViewer:decompileMc SKIPPED
-:HPViewer:fixMcSources SKIPPED
-:HPViewer:applySourcePatches SKIPPED
-:HPViewer:remapMcSources SKIPPED
-:HPViewer:recompileMc SKIPPED
-:HPViewer:extractNatives SKIPPED
-:HPViewer:getAssetIndex UP-TO-DATE
-:HPViewer:getAssets
-:HPViewer:makeStart
-:HPViewer:setupDecompWorkspace
-:HavestAll:deobfCompileDummyTask
-:HavestAll:deobfProvidedDummyTask
-:HavestAll:getVersionJson
-:HavestAll:extractUserdev
-:HavestAll:extractDependencyATs SKIPPED
-:HavestAll:extractMcpData SKIPPED
-:HavestAll:extractMcpMappings SKIPPED
-:HavestAll:genSrgs SKIPPED
-:HavestAll:downloadClient SKIPPED
-:HavestAll:downloadServer SKIPPED
-:HavestAll:splitServerJar SKIPPED
-:HavestAll:mergeJars SKIPPED
-:HavestAll:deobfMcSRG SKIPPED
-:HavestAll:decompileMc SKIPPED
-:HavestAll:fixMcSources SKIPPED
-:HavestAll:applySourcePatches SKIPPED
-:HavestAll:remapMcSources SKIPPED
-:HavestAll:recompileMc SKIPPED
-:HavestAll:extractNatives SKIPPED
-:HavestAll:getAssetIndex UP-TO-DATE
-:HavestAll:getAssets
-:HavestAll:makeStart
-:HavestAll:setupDecompWorkspace
-:TemperedGlass:deobfCompileDummyTask
-:TemperedGlass:deobfProvidedDummyTask
-:TemperedGlass:getVersionJson
-:TemperedGlass:extractUserdev
-:TemperedGlass:extractDependencyATs SKIPPED
-:TemperedGlass:extractMcpData SKIPPED
-:TemperedGlass:extractMcpMappings SKIPPED
-:TemperedGlass:genSrgs SKIPPED
-:TemperedGlass:downloadClient SKIPPED
-:TemperedGlass:downloadServer SKIPPED
-:TemperedGlass:splitServerJar SKIPPED
-:TemperedGlass:mergeJars SKIPPED
-:TemperedGlass:deobfMcSRG SKIPPED
-:TemperedGlass:decompileMc SKIPPED
-:TemperedGlass:fixMcSources SKIPPED
-:TemperedGlass:applySourcePatches SKIPPED
-:TemperedGlass:remapMcSources SKIPPED
-:TemperedGlass:recompileMc SKIPPED
-:TemperedGlass:extractNatives SKIPPED
-:TemperedGlass:getAssetIndex UP-TO-DATE
-:TemperedGlass:getAssets
-:TemperedGlass:makeStart
-:TemperedGlass:setupDecompWorkspace
+:ExBombs:genSrgs (Thread[Daemon worker,5,main]) completed. Took 0.513 secs.
+:ExBombs:reobfJar (Thread[Daemon worker,5,main]) started.
+:ExBombs:reobfJar
+Executing task ':ExBombs:reobfJar' (up-to-date check took 0.0 secs) due to:
+  Task.upToDateWhen is false.
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\libs', not found
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\libs', not found
+:ExBombs:reobfJar (Thread[Daemon worker,5,main]) completed. Took 1.042 secs.
+:ExBombs:extractAnnotationsJar (Thread[Daemon worker,5,main]) started.
+:ExBombs:extractAnnotationsJar
+Executing task ':ExBombs:extractAnnotationsJar' (up-to-date check took 0.0 secs) due to:
+  Task.upToDateWhen is false.
+:ExBombs:extractAnnotationsJar (Thread[Daemon worker,5,main]) completed. Took 0.097 secs.
+:ExBombs:extractRangemapReplacedMain (Thread[Daemon worker,5,main]) started.
+:ExBombs:extractRangemapReplacedMain
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\libs', not found
+Executing task ':ExBombs:extractRangemapReplacedMain' (up-to-date check took 0.02 secs) due to:
+  No history is available.
+E:\Programs\Minecraft\forge-1.12.2\ExBombs\build\sources\main\java
+file or directory 'E:\Programs\Minecraft\forge-1.12.2\ExBombs\libs', not found
+:ExBombs:extractRangemapReplacedMain (Thread[Daemon worker,5,main]) completed. Took 12.195 secs.
+:ExBombs:retromapReplacedMain (Thread[Daemon worker,5,main]) started.
+:ExBombs:retromapReplacedMain
+Executing task ':ExBombs:retromapReplacedMain' (up-to-date check took 0.001 secs) due to:
+  No history is available.
+remapping source...
+:ExBombs:retromapReplacedMain (Thread[Daemon worker,5,main]) completed. Took 2.047 secs.
+:ExBombs:sourceJar (Thread[Daemon worker,5,main]) started.
+:ExBombs:sourceJar
+Executing task ':ExBombs:sourceJar' (up-to-date check took 0.001 secs) due to:
+  No history is available.
+:ExBombs:sourceJar (Thread[Daemon worker,5,main]) completed. Took 0.105 secs.
+:ExBombs:assemble (Thread[Daemon worker,5,main]) started.
+:ExBombs:assemble
+Skipping task ':ExBombs:assemble' as it has no actions.
+:ExBombs:assemble (Thread[Daemon worker,5,main]) completed. Took 0.002 secs.
+:ExBombs:check (Thread[Daemon worker,5,main]) started.
+:ExBombs:check
+Skipping task ':ExBombs:check' as it has no actions.
+:ExBombs:check UP-TO-DATE
+:ExBombs:check (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
+:ExBombs:build (Thread[Daemon worker,5,main]) started.
+:ExBombs:build
+Skipping task ':ExBombs:build' as it has no actions.
+:ExBombs:build (Thread[Daemon worker,5,main]) completed. Took 0.001 secs.
 
 BUILD SUCCESSFUL
 
-Total time: 4 mins 0.267 secs
+Total time: 44.071 secs

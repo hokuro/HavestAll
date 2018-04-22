@@ -1,21 +1,20 @@
 [
-{
-    "modid": "HavestAll",
-    "name": "HavestAll",
-    "description": "Break all brock. ",
-    "mcversion": "$mcversion",
-    "version": "$version",
-    "url": "",
-    "updateUrl": "",
-    "authors": [
-        "OhoNou"
-    ],
-    "credits": "",
-    "logoFile": "",
-    "screenshots": [
-    ],
+  {
+    "description":"CutAll MineAll DigAll in one mod",
     "parent":"",
-    "dependencies": [
-    ]
-}
+    "logoFile":"",
+    "credits":"basashi",
+    "dependencies":[],
+    "modid":"havall",
+    "mcversion":"1.12.2",
+    "screenshots":[],
+    "authorList":[
+      "basashi"
+    ],
+    "name":"HavestAll",
+    "url":"",
+    "updateUrl":"",
+    "version":"1.12.0",
+    "requiredMods":["Minecraft Forge1.12.2-14.23.3.2655+"]
+  }
 ]

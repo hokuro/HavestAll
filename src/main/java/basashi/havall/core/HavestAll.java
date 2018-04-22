@@ -18,7 +18,10 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = ModCommon.MOD_ID, name = ModCommon.MOD_NAME, version = ModCommon.MOD_VERSION)
+@Mod(modid = ModCommon.MOD_ID,
+name = ModCommon.MOD_NAME,
+version = ModCommon.MOD_VERSION,
+acceptedMinecraftVersions = ModCommon.MOD_ACCEPTED_MC_VERSIONS)
 public class HavestAll {
 	@Mod.Instance(ModCommon.MOD_ID)
 	public static HavestAll instance;

@@ -1,6 +1,6 @@
 {
     "pack": {
-        "pack_format": 2,
-        "description": "Auto Pick Up Details"
+        "pack_format": 3,
+        "description": "HavestAll resource"
     }
 }
