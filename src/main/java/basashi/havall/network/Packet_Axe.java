@@ -22,8 +22,7 @@ public class Packet_Axe extends Packet_HavestBase {
 		try {
 			_pos = BlockPos.fromLong(stream.readLong());
 			int i = stream.readInt();
-			Block blk = Block.getBlockById(i);
-			this.blockID = blk.getBlockState().getBaseState();
+			this.blockID = Block.getStateById(i);
 		} catch (IOException localIOException) {
 		}
 	}
@@ -33,7 +32,7 @@ public class Packet_Axe extends Packet_HavestBase {
 		DataOutputStream stream = new DataOutputStream(byteBuf);
 		try {
 			stream.writeLong(_pos.toLong());
-			stream.writeInt(Block.getIdFromBlock(blockID.getBlock()));
+			stream.writeInt(Block.getStateId(blockID.getBlockState()));
 
 			return new PacketBuffer(Unpooled.wrappedBuffer(byteBuf.toByteArray()));
 		} catch (IOException localIOException1) {

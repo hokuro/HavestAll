@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import basashi.havall.config.ConfigValue;
-import basashi.havall.core.ModCommon;
+import basashi.havall.config.MyConfig;
+import basashi.havall.network.Message_Packet;
 import basashi.havall.network.Packet_HavestBase;
 import basashi.havall.network.Packet_Scop;
 import net.minecraft.block.Block;
@@ -17,20 +17,18 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class HavestScop implements IHavest  {
 
 	private final Map<Long, List<BlockPos>> untouchableArea = new TreeMap();
 
-	public CPacketCustomPayload getServerPacket(Packet_HavestBase pkt, World world){
+	public Message_Packet getServerPacket(Packet_HavestBase pkt, World world){
 		Packet_Scop pktScop = (Packet_Scop)pkt;
 		if (!isDelArea(pktScop._pos)) {
 			Long delAreaKey = Long.valueOf(System.currentTimeMillis() + 3000L);
@@ -56,7 +54,9 @@ public class HavestScop implements IHavest  {
 				}
 			}
 			pktScop.position.clear();
-			return new CPacketCustomPayload(ModCommon.MOD_CHANEL,pktScop.writePacketData());
+			//return new CPacketCustomPayload(ModCommon.MOD_CHANEL,pktScop.writePacketData());
+			return new Message_Packet(pkt.writePacketData());
+
 		}
 		return null;
 	}
@@ -103,15 +103,15 @@ public class HavestScop implements IHavest  {
 
 	public void startHavest(Packet_HavestBase pkt, EntityPlayer player) {
 		Packet_Scop p = (Packet_Scop)pkt;
-		MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
+		MinecraftServer server = player.getServer();
 		if (null != server) {
 			World world = server.getWorld(player.dimension);
 			if (canDig(player, p)) {
 				breakAll(world, player, p);
-				if (ConfigValue.Scop.AutoCollect) {
+				if (MyConfig._scop.AutoCollect.get()) {
 					collectDrop(world, player, p);
 				}
-				if (ConfigValue.Scop.DropGather) {
+				if (MyConfig._scop.DropGather.get()) {
 					stackItem(world, player, p);
 				}
 			}
@@ -127,7 +127,7 @@ public class HavestScop implements IHavest  {
 			return false;
 		}
 		if (player.canHarvestBlock(p.blockID)) {
-			return ConfigValue.CheckHavest(p.itemstack.getItem(), p.blockID);
+			return MyConfig.CheckHavest(p.itemstack.getItem(), p.blockID);
 		}
 		return false;
 	}
@@ -137,7 +137,7 @@ public class HavestScop implements IHavest  {
 		checkConnection(world, p._pos, p);
 		while (breakBlock(world, player, p)) {}
 		p.position.clear();
-		if (ConfigValue.Scop.Durability == 1) {
+		if (MyConfig._scop.Durability.get() == 1) {
 			for (int i = 0; i < p.count_dig; i++) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, p._pos, player);
 				if (p.itemstack.getCount() == 0) {
@@ -153,27 +153,27 @@ public class HavestScop implements IHavest  {
 		int xs = 1, xe = 1;
 		int ys = 1, ye = 1;
 		int zs = 1, ze = 1;
-		if (ConfigValue.Scop.Limiter != 0) {
-			if (p._pos.getX() - ConfigValue.Scop.Limiter / 2 == pos.getX()) {
+		if (MyConfig._scop.Limiter.get() != 0) {
+			if (p._pos.getX() - MyConfig._scop.Limiter.get() / 2 == pos.getX()) {
 				xs = 0;
 			}
-			if (p._pos.getX() + ConfigValue.Scop.Limiter / 2 == pos.getX()) {
+			if (p._pos.getX() + MyConfig._scop.Limiter.get() / 2 == pos.getX()) {
 				xe = 0;
 			}
-			if (p._pos.getY() - ConfigValue.Scop.Limiter / 2 == pos.getY()) {
+			if (p._pos.getY() - MyConfig._scop.Limiter.get() / 2 == pos.getY()) {
 				ys = 0;
 			}
-			if (p._pos.getY() + ConfigValue.Scop.Limiter / 2 == pos.getY()) {
+			if (p._pos.getY() + MyConfig._scop.Limiter.get() / 2 == pos.getY()) {
 				ye = 0;
 			}
-			if (p._pos.getZ() - ConfigValue.Scop.Limiter / 2 == pos.getZ()) {
+			if (p._pos.getZ() - MyConfig._scop.Limiter.get() / 2 == pos.getZ()) {
 				zs = 0;
 			}
-			if (p._pos.getZ() + ConfigValue.Scop.Limiter / 2 == pos.getZ()) {
+			if (p._pos.getZ() + MyConfig._scop.Limiter.get() / 2 == pos.getZ()) {
 				ze = 0;
 			}
 		}
-		if ((!ConfigValue.Scop.DestroyUnder) && (p._pos.getY() == pos.getY())) {
+		if ((!MyConfig._scop.DestroyUnder.get()) && (p._pos.getY() == pos.getY())) {
 			ys = 0;
 		}
 		for (int x2 = -xs; x2 <= xe; x2++) {
@@ -208,11 +208,11 @@ public class HavestScop implements IHavest  {
 				block1.getBlock().dropXpOnBlockBreak(world, pos, event.getExpToDrop());
 			} catch (Exception localException) {
 			}
-			world.setBlockToAir(pos);
-			if ((ConfigValue.Scop.DropGather) || (ConfigValue.Scop.AutoCollect)) {
+			world.setBlockState(pos, Blocks.AIR.getDefaultState());
+			if ((MyConfig._scop.DropGather.get()) || (MyConfig._scop.AutoCollect.get())) {
 				moveEntityItem(world, entityplayer, pos, p._pos);
 			}
-			if (ConfigValue.Scop.Durability == 2) {
+			if (MyConfig._scop.Durability.get() == 2) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, pos, entityplayer);
 				if (p.itemstack.getCount() == 0) {
 					//entityplayer.destroyCurrentEquippedItem();
@@ -234,7 +234,7 @@ public class HavestScop implements IHavest  {
 		}
 		for (Object o : list) {
 			Entity e = (Entity) o;
-			if (((e instanceof EntityItem)) && (!e.isDead)) {
+			if (((e instanceof EntityItem)) && (e.isAlive())) {
 				e.setPosition(to.getX(), to.getY(), to.getZ());
 			}
 		}
@@ -249,19 +249,19 @@ public class HavestScop implements IHavest  {
 		}
 		for (int i = 0; i < list.size(); i++) {
 			Entity entity1 = (Entity) list.get(i);
-			if (((entity1 instanceof EntityItem)) && (!entity1.isDead)) {
+			if (((entity1 instanceof EntityItem)) && (entity1.isAlive())) {
 				EntityItem e1 = (EntityItem) entity1;
 				ItemStack e1Item = e1.getItem();
-				int itemDamage = e1Item.getItemDamage();
+				int itemDamage = e1Item.getDamage();
 				for (int j = i + 1; j < list.size(); j++) {
 					Entity entity2 = (Entity) list.get(j);
-					if (((entity2 instanceof EntityItem)) && (!entity2.isDead)) {
+					if (((entity2 instanceof EntityItem)) && (entity2.isAlive())) {
 						EntityItem e2 = (EntityItem) entity2;
 						ItemStack e2Item = e2.getItem();
-						int itemDamage1 = e2Item.getItemDamage	();
+						int itemDamage1 = e2Item.getDamage	();
 						if ((e1Item.getItem() == e2Item.getItem	()) && (itemDamage == itemDamage1)) {
 							e1Item.grow(e2Item.getCount());
-							entity2.setDead();
+							entity2.remove();
 						}
 					}
 				}
@@ -280,7 +280,7 @@ public class HavestScop implements IHavest  {
 		}
 		for (Object i : list) {
 			Entity entity = (Entity) i;
-			if (((entity instanceof EntityItem)) && (!entity.isDead)) {
+			if (((entity instanceof EntityItem)) && (entity.isAlive())) {
 				((EntityItem) entity).setNoPickupDelay();
 				entity.onCollideWithPlayer(entityplayer);
 			}
@@ -289,7 +289,7 @@ public class HavestScop implements IHavest  {
 
 	private int getMetaFromBlockState(IBlockState blk) {
 		try {
-			return blk.getBlock().getMetaFromState(blk);
+			return Block.getStateId(blk);
 		} catch (IllegalArgumentException e) {
 		}
 		return 0;

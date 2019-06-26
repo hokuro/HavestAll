@@ -1,14 +1,10 @@
 package basashi.havall.core.log;
 
 
-import java.util.Locale;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.ThreadContext;
 
 import basashi.havall.core.ModCommon;
-import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 
 
 public class ModLog {
@@ -25,7 +21,6 @@ public class ModLog {
 	// コンストラクタ
 	private ModLog(){
 		_log = LogManager.getLogger(ModCommon.MOD_NAME);
-		ThreadContext.put("side", FMLLaunchHandler.side().name().toLowerCase(Locale.ENGLISH));
 		configured = true;
 	}
 

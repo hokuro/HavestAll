@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import basashi.havall.config.ConfigValue;
-import basashi.havall.core.ModCommon;
+import basashi.havall.config.MyConfig;
+import basashi.havall.network.Message_Packet;
 import basashi.havall.network.Packet_HavestBase;
 import basashi.havall.network.Packet_PickAxe;
 import net.minecraft.block.Block;
@@ -17,14 +17,12 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class HavestPickAxe implements IHavest {
 
@@ -34,7 +32,7 @@ public class HavestPickAxe implements IHavest {
 	private static final int untouchableMiliSec = 3000;
 	private static final Map<Long, List<BlockPos>> untouchableArea = new TreeMap();
 
-	public CPacketCustomPayload getServerPacket(Packet_HavestBase pkt, World world){
+	public Message_Packet getServerPacket(Packet_HavestBase pkt, World world){
 		Packet_PickAxe pktScop = (Packet_PickAxe)pkt;
 		if (!isDelArea(pkt._pos)) {
 			Long delAreaKey = Long.valueOf(System.currentTimeMillis() + 3000L);
@@ -62,7 +60,9 @@ public class HavestPickAxe implements IHavest {
 				}
 			}
 			pkt.position.clear();
-			return new CPacketCustomPayload(ModCommon.MOD_CHANEL,pkt.writePacketData());
+			//return new CPacketCustomPayload(ModCommon.MOD_CHANEL,pkt.writePacketData());
+
+			return new Message_Packet(pkt.writePacketData());
 		}
 		return null;
 	}
@@ -84,7 +84,9 @@ public class HavestPickAxe implements IHavest {
 			retpkt._pos = pos;
 			retpkt.blockID = blk;
 			retpkt.metadata = getMetaFromBlockState(blk);
-			if ((retpkt.blockID == Blocks.REDSTONE_ORE) || (retpkt.blockID == Blocks.LIT_REDSTONE_ORE)) {
+			// 光るレッドストーン鉱石がなくなった？
+			//if ((retpkt.blockID == Blocks.REDSTONE_ORE) || (retpkt.blockID == Blocks.LIT_REDSTONE_ORE)) {
+			if ((retpkt.blockID == Blocks.REDSTONE_ORE)) {
 				retpkt.flag_rs = true;
 			}
 			retpkt.nanoTime = System.nanoTime();
@@ -94,7 +96,7 @@ public class HavestPickAxe implements IHavest {
 
 	public void startHavest(Packet_HavestBase pkt, EntityPlayer player) {
 		Packet_PickAxe p = (Packet_PickAxe)pkt;
-		MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
+		MinecraftServer server = player.getServer();
 		if (null == server) {
 		}
 		World world = server.getWorld(player.dimension);
@@ -102,10 +104,10 @@ public class HavestPickAxe implements IHavest {
 			return;
 		}
 		breakAll(world, player, p);
-		if (ConfigValue.PickAxe.AutoCollect) {
+		if (MyConfig._pickAxe.AutoCollect.get()) {
 			collectDrop(world, player, p);
 		}
-		if (ConfigValue.PickAxe.DropGather) {
+		if (MyConfig._pickAxe.DropGather.get()) {
 			stackItem(world, player, p);
 		}
 	}
@@ -115,7 +117,7 @@ public class HavestPickAxe implements IHavest {
 		while (breakBlock(world, player, p)) {
 		}
 		p.position.clear();
-		if (ConfigValue.PickAxe.Durability == 1) {
+		if (MyConfig._pickAxe.Durability.get() == 1) {
 			for (int i = 0; i < p.count_mine; i++) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, p._pos, player);
 				if (p.itemstack.getCount() == 0) {
@@ -142,11 +144,11 @@ public class HavestPickAxe implements IHavest {
 				block1.getBlock().dropXpOnBlockBreak(world, pos, event.getExpToDrop());
 			} catch (Exception localException) {
 			}
-			world.setBlockToAir(pos);
-			if ((ConfigValue.PickAxe.DropGather) || (ConfigValue.PickAxe.AutoCollect)) {
+			world.setBlockState(pos, Blocks.AIR.getDefaultState());
+			if ((MyConfig._pickAxe.DropGather.get()) || (MyConfig._pickAxe.AutoCollect.get())) {
 				moveEntityItem(world, entityplayer, pos, p._pos);
 			}
-			if (ConfigValue.PickAxe.Durability == 2) {
+			if (MyConfig._pickAxe.Durability.get() == 2) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, pos, entityplayer);
 				if (p.itemstack.getCount() == 0) {
 					destroyCurrentEquippedItem(entityplayer);
@@ -171,15 +173,17 @@ public class HavestPickAxe implements IHavest {
 		if ((null == p.blockID) || (Blocks.BEDROCK == p.blockID.getBlock())) {
 			return false;
 		}
-		if (ConfigValue.getToolKind(p.itemstack.getItem()) != ConfigValue.TOOLS.PICKAXE) {
+		if (MyConfig.getToolKind(p.itemstack.getItem()) != MyConfig.TOOLS.PICKAXE) {
 			return false;
 		}
 		if (p.flag_rs) {
-			return (ConfigValue.CheckHavest(p.itemstack.getItem(), Blocks.REDSTONE_ORE.getDefaultState()) ||
-					ConfigValue.CheckHavest(p.itemstack.getItem(), Blocks.LIT_REDSTONE_ORE.getDefaultState()));
+			// 光るレッドストーン鉱石がなくなった？
+//			return (MyConfig.CheckHavest(p.itemstack.getItem(), Blocks.REDSTONE_ORE.getDefaultState()) ||
+//					MyConfig.CheckHavest(p.itemstack.getItem(), Blocks.LIT_REDSTONE_ORE.getDefaultState()));
+			return MyConfig.CheckHavest(p.itemstack.getItem(), Blocks.REDSTONE_ORE.getDefaultState());
 
 		}
-		return ConfigValue.CheckHavest(p.itemstack.getItem(),p.blockID);
+		return MyConfig.CheckHavest(p.itemstack.getItem(),p.blockID);
 	}
 
 	private static void collectDrop(World world, EntityPlayer entityplayer, Packet_PickAxe p) {
@@ -208,19 +212,19 @@ public class HavestPickAxe implements IHavest {
 		}
 		for (int i = 0; i < list.size(); i++) {
 			Entity entity1 = (Entity) list.get(i);
-			if (((entity1 instanceof EntityItem)) && (!entity1.isDead)) {
+			if (((entity1 instanceof EntityItem)) && (entity1.isAlive())) {
 				EntityItem e1 = (EntityItem) entity1;
 				ItemStack e1Item = e1.getItem();
-				int itemDamage = e1Item.getItemDamage();
+				int itemDamage = e1Item.getDamage();
 				for (int j = i + 1; j < list.size(); j++) {
 					Entity entity2 = (Entity) list.get(j);
-					if (((entity2 instanceof EntityItem)) && (!entity2.isDead)) {
+					if (((entity2 instanceof EntityItem)) && (entity2.isAlive())) {
 						EntityItem e2 = (EntityItem) entity2;
 						ItemStack e2Item = e2.getItem();
-						int itemDamage1 = e2Item.getItemDamage();
+						int itemDamage1 = e2Item.getDamage();
 						if ((e1Item.getItem() == e2Item.getItem()) && (itemDamage == itemDamage1)) {
 							e1Item.grow(e2Item.getCount());
-							entity2.setDead();
+							entity2.remove();
 						}
 					}
 				}
@@ -252,27 +256,27 @@ public class HavestPickAxe implements IHavest {
 		int ye = 1;
 		int zs = 1;
 		int ze = 1;
-		if (ConfigValue.PickAxe.Limiter != 0) {
-			if (p._pos.getX() - ConfigValue.PickAxe.Limiter / 2 == pos.getX()) {
+		if (MyConfig._pickAxe.Limiter.get() != 0) {
+			if (p._pos.getX() - MyConfig._pickAxe.Limiter.get() / 2 == pos.getX()) {
 				xs = 0;
 			}
-			if (p._pos.getX() + ConfigValue.PickAxe.Limiter / 2 == pos.getX()) {
+			if (p._pos.getX() + MyConfig._pickAxe.Limiter.get() / 2 == pos.getX()) {
 				xe = 0;
 			}
-			if (p._pos.getY() - ConfigValue.PickAxe.Limiter / 2 == pos.getY()) {
+			if (p._pos.getY() - MyConfig._pickAxe.Limiter.get() / 2 == pos.getY()) {
 				ys = 0;
 			}
-			if (p._pos.getY() + ConfigValue.PickAxe.Limiter / 2 == pos.getY()) {
+			if (p._pos.getY() + MyConfig._pickAxe.Limiter.get() / 2 == pos.getY()) {
 				ye = 0;
 			}
-			if (p._pos.getZ() - ConfigValue.PickAxe.Limiter / 2 == pos.getZ()) {
+			if (p._pos.getZ() - MyConfig._pickAxe.Limiter.get() / 2 == pos.getZ()) {
 				zs = 0;
 			}
-			if (p._pos.getZ() + ConfigValue.PickAxe.Limiter / 2 == pos.getZ()) {
+			if (p._pos.getZ() + MyConfig._pickAxe.Limiter.get() / 2 == pos.getZ()) {
 				ze = 0;
 			}
 		}
-		if ((!ConfigValue.PickAxe.DestroyUnder) && (p._pos.getY() == pos.getY())) {
+		if ((!MyConfig._pickAxe.DestroyUnder.get()) && (p._pos.getY() == pos.getY())) {
 			ys = 0;
 		}
 		for (int x2 = -xs; x2 <= xe; x2++) {
@@ -299,7 +303,9 @@ public class HavestPickAxe implements IHavest {
 			if ((block1 != p.blockID.getBlock()) || (p.metadata != l)) {
 				return false;
 			}
-		} else if ((block1 != Blocks.REDSTONE_ORE) && (block1 != Blocks.LIT_REDSTONE_ORE)) {
+		//} else if ((block1 != Blocks.REDSTONE_ORE) && (block1 != Blocks.LIT_REDSTONE_ORE)) {
+
+		} else if ((block1 != Blocks.REDSTONE_ORE)) {
 			return false;
 		}
 		return true;
@@ -314,7 +320,7 @@ public class HavestPickAxe implements IHavest {
 		}
 		for (Object o : list) {
 			Entity e = (Entity) o;
-			if (((e instanceof EntityItem)) && (!e.isDead)) {
+			if (((e instanceof EntityItem)) && (e.isAlive())) {
 				e.setPosition(to.getX() + 0.5D, to.getY() + 0.5D, to.getZ() + 0.5D);
 			}
 		}
@@ -322,7 +328,7 @@ public class HavestPickAxe implements IHavest {
 
 	private int getMetaFromBlockState(IBlockState i) {
 		try {
-			return i.getBlock().getMetaFromState(i);
+			return Block.getStateId(i);
 		} catch (IllegalArgumentException e) {
 		}
 		return 0;

@@ -23,9 +23,8 @@ public class Packet_PickAxe extends Packet_HavestBase {
 		try {
 			super._pos = BlockPos.fromLong(stream.readLong());
 			int i = stream.readInt();
-			Block blk = Block.getBlockById(i);
+			this.blockID = Block.getStateById(i);
 			this.metadata = stream.readInt();
-			this.blockID = blk==null?null: blk.getStateFromMeta(this.metadata);
 			this.flag_rs = stream.readBoolean();
 		} catch (IOException localIOException) {
 		}
@@ -36,7 +35,7 @@ public class Packet_PickAxe extends Packet_HavestBase {
 		DataOutputStream stream = new DataOutputStream(byteBuf);
 		try {
 			stream.writeLong(this._pos.toLong());
-			stream.writeInt(Block.getIdFromBlock(this.blockID.getBlock()));
+			stream.writeInt(Block.getStateId(this.blockID.getBlockState()));
 			stream.writeInt(this.metadata);
 			stream.writeBoolean(this.flag_rs);
 

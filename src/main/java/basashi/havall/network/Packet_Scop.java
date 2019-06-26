@@ -23,8 +23,7 @@ public class Packet_Scop extends Packet_HavestBase {
 		try{
 			_pos = BlockPos.fromLong(stream.readLong());
 			int i = stream.readInt();
-			Block blk = Block.getBlockById(i);
-			this.blockID = blk==null?null: blk.getBlockState().getBaseState();
+			this.blockID = Block.getStateById(i);
 			metadata = stream.readInt();
 			flag_Dirt = stream.readBoolean();
 		}catch(IOException ex){
@@ -37,7 +36,7 @@ public class Packet_Scop extends Packet_HavestBase {
 		DataOutputStream stream = new DataOutputStream(bytebuf);
 		try{
 			stream.writeLong(_pos.toLong());
-			stream.writeInt(Block.getIdFromBlock(blockID.getBlock()));
+			stream.writeInt(Block.getStateId(blockID.getBlockState()));
 			stream.writeInt(metadata);
 			stream.writeBoolean(flag_Dirt);
 

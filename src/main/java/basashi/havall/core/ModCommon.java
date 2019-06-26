@@ -27,5 +27,5 @@ public final class ModCommon {
 
 	// コンフィグ カテゴリー general
 	public static final String MOD_CONFIG_CAT_GENELAL = "general";
-	public static final String MOD_CHANEL ="Mod_Channel_HavestAll";
+	public static final String MOD_CHANEL ="channelhavall";
 }

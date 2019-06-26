@@ -2,8 +2,8 @@ package basashi.havall.event;
 
 import java.util.List;
 
-import basashi.havall.config.ConfigValue;
-import basashi.havall.core.ModCommon;
+import basashi.havall.config.MyConfig;
+import basashi.havall.network.Message_Packet;
 import basashi.havall.network.Packet_Axe;
 import basashi.havall.network.Packet_HavestBase;
 import net.minecraft.block.Block;
@@ -14,20 +14,18 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class HavestAxe implements IHavest{
 	public static boolean dropleaves = true;
 
-	public CPacketCustomPayload getServerPacket(Packet_HavestBase pkt, World world){
-		return new CPacketCustomPayload(ModCommon.MOD_CHANEL,pkt.writePacketData());
+	public Message_Packet getServerPacket(Packet_HavestBase pkt, World world){
+		return new Message_Packet(pkt.writePacketData());
 	}
 
 	public Packet_HavestBase makePacket(boolean blAdd, BlockPos pos, IBlockState blk, Packet_HavestBase pkt){
@@ -52,13 +50,13 @@ public class HavestAxe implements IHavest{
 
 	public void startHavest(Packet_HavestBase pkt, EntityPlayer player){
 		Packet_Axe p = (Packet_Axe)pkt;
-		MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
+		MinecraftServer server = player.getServer();
 		if (null == server) {
 		}
 		World world = server.getWorld(player.dimension);
 		if (canCut(player, p)) {
 			breakAll(world, player, p);
-			if (ConfigValue.Axe.DropGather) {
+			if (MyConfig._axe.DropGather.get()) {
 				stackItem(world, player, p);
 			}
 		}
@@ -77,7 +75,7 @@ public class HavestAxe implements IHavest{
 			return false;
 		}
 		if (player.canHarvestBlock(p.blockID)) {
-			return ConfigValue.CheckHavest(p.itemstack.getItem(),p.blockID);
+			return MyConfig.CheckHavest(p.itemstack.getItem(),p.blockID);
 		}
 		return false;
 	}
@@ -91,19 +89,19 @@ public class HavestAxe implements IHavest{
 		}
 		for (int i = 0; i < list.size(); i++) {
 			Entity entity1 = (Entity) list.get(i);
-			if (((entity1 instanceof EntityItem)) && (!entity1.isDead)) {
+			if (((entity1 instanceof EntityItem)) && (entity1.isAlive())) {
 				EntityItem e1 = (EntityItem) entity1;
 				ItemStack e1Item = e1.getItem();
-				int itemDamage = e1Item.getItemDamage();
+				int itemDamage = e1Item.getDamage();
 				for (int j = i + 1; j < list.size(); j++) {
 					Entity entity2 = (Entity) list.get(j);
-					if (((entity2 instanceof EntityItem)) && (!entity2.isDead)) {
+					if (((entity2 instanceof EntityItem)) && (entity2.isAlive())) {
 						EntityItem e2 = (EntityItem) entity2;
 						ItemStack e2Item = e2.getItem();
-						int itemDamage1 = e2Item.getItemDamage();
+						int itemDamage1 = e2Item.getDamage();
 						if ((e1Item.getItem() == e2Item.getItem()) && (itemDamage == itemDamage1)) {
 							e1Item.grow(e2Item.getCount());
-							entity2.setDead();
+							entity2.remove();
 						}
 					}
 				}
@@ -123,7 +121,7 @@ public class HavestAxe implements IHavest{
 		}
 		for (Object o : list) {
 			Entity e = (Entity) o;
-			if (((e instanceof EntityItem)) && (!e.isDead)) {
+			if (((e instanceof EntityItem)) && (e.isAlive())) {
 				e.setPosition(to.getX(), to.getY(), to.getZ());
 			}
 		}
@@ -138,7 +136,7 @@ public class HavestAxe implements IHavest{
 		while (breakBlock(world, player, p)) {
 		}
 		p.position.clear();
-		if (ConfigValue.Axe.Durability == 1) {
+		if (MyConfig._axe.Durability.get() == 1) {
 			for (int i = 0; i < p.count_cut; i++) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, p._pos, player);
 				if (p.itemstack.getCount() == 0) {
@@ -157,27 +155,27 @@ public class HavestAxe implements IHavest{
 		int ye = 1;
 		int zs = 1;
 		int ze = 1;
-		if (ConfigValue.Axe.Limiter != 0) {
-			if (p._pos.getX() - ConfigValue.Axe.Limiter / 2 == pos.getX()) {
+		if (MyConfig._axe.Limiter.get() != 0) {
+			if (p._pos.getX() - MyConfig._axe.Limiter.get() / 2 == pos.getX()) {
 				xs = 0;
 			}
-			if (p._pos.getX() + ConfigValue.Axe.Limiter / 2 == pos.getX()) {
+			if (p._pos.getX() + MyConfig._axe.Limiter.get() / 2 == pos.getX()) {
 				xe = 0;
 			}
-			if (p._pos.getY() - ConfigValue.Axe.Limiter / 2 == pos.getY()) {
+			if (p._pos.getY() - MyConfig._axe.Limiter.get() / 2 == pos.getY()) {
 				ys = 0;
 			}
-			if (p._pos.getY() + ConfigValue.Axe.Limiter / 2 == pos.getY()) {
+			if (p._pos.getY() + MyConfig._axe.Limiter.get() / 2 == pos.getY()) {
 				ye = 0;
 			}
-			if (p._pos.getZ() - ConfigValue.Axe.Limiter / 2 == pos.getZ()) {
+			if (p._pos.getZ() - MyConfig._axe.Limiter.get() / 2 == pos.getZ()) {
 				zs = 0;
 			}
-			if (p._pos.getZ() + ConfigValue.Axe.Limiter / 2 == pos.getZ()) {
+			if (p._pos.getZ() + MyConfig._axe.Limiter.get() / 2 == pos.getZ()) {
 				ze = 0;
 			}
 		}
-		if ((!ConfigValue.Axe.DestroyUnder) && (p._pos.getY() == pos.getY())) {
+		if ((!MyConfig._axe.DestroyUnder.get()) && (p._pos.getY() == pos.getY())) {
 			ys = 0;
 		}
 		for (int x2 = -xs; x2 <= xe; x2++) {
@@ -205,16 +203,16 @@ public class HavestAxe implements IHavest{
 			block.harvestBlock(world, entityplayer, pos, block1, world.getTileEntity(pos),entityplayer.getHeldItemMainhand());
 			try {
 				block.dropXpOnBlockBreak(world, pos, event.getExpToDrop());
-				world.setBlockToAir(pos);
+				world.setBlockState(pos, Blocks.AIR.getDefaultState());
 			} catch (Exception localException) {
 			}
-			if (ConfigValue.Axe.DropGather) {
+			if (MyConfig._axe.DropGather.get()) {
 				moveEntityItem(world, entityplayer, pos, p._pos);
 			}
 			if (dropleaves) {
 				checkLeaves(world, entityplayer, pos, p);
 			}
-			if (ConfigValue.Axe.Durability == 2) {
+			if (MyConfig._axe.Durability.get() == 2) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, pos, entityplayer);
 				if (p.itemstack.getCount() == 0) {
 					//entityplayer.destroyCurrentEquippedItem();
@@ -235,19 +233,19 @@ public class HavestAxe implements IHavest{
 	}
 
 	private void checkLeaves(World world, EntityPlayer entityplayer, BlockPos pos, Packet_Axe p) {
-		for (int i2 = -ConfigValue.Axe.LeavesRange; i2 <= ConfigValue.Axe.LeavesRange; i2++) {
-			for (int j2 = -ConfigValue.Axe.LeavesRange; j2 <= ConfigValue.Axe.LeavesRange; j2++) {
-				for (int k2 = -ConfigValue.Axe.LeavesRange; k2 <= ConfigValue.Axe.LeavesRange; k2++) {
+		for (int i2 = -MyConfig._axe.LeavesRange.get(); i2 <= MyConfig._axe.LeavesRange.get(); i2++) {
+			for (int j2 = -MyConfig._axe.LeavesRange.get(); j2 <= MyConfig._axe.LeavesRange.get(); j2++) {
+				for (int k2 = -MyConfig._axe.LeavesRange.get(); k2 <= MyConfig._axe.LeavesRange.get(); k2++) {
 					BlockPos pos2 = pos.add(i2, j2, k2);
 					IBlockState block1 = world.getBlockState(pos2);
 					Block block = block1.getBlock();
 					if ((block1 != null) && (block.getMaterial(block1) == Material.LEAVES)
-							&& ConfigValue.Axe.checkLeaves(block)) {
+							&& MyConfig._axe.checkLeaves(block)) {
 						BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos2, block1, entityplayer);
 						block.harvestBlock(world, entityplayer, pos2, block1, world.getTileEntity(pos2),entityplayer.getHeldItemMainhand());
 						block.dropXpOnBlockBreak(world, pos2, event.getExpToDrop());
-						world.setBlockToAir(pos2);
-						if (ConfigValue.Axe.DropGather) {
+						world.setBlockState(pos2, Blocks.AIR.getDefaultState());
+						if (MyConfig._axe.DropGather.get()) {
 							moveEntityItem(world, entityplayer, pos2, p._pos);
 						}
 					}
