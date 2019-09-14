@@ -2,17 +2,17 @@ package basashi.havall.network;
 
 import java.util.LinkedList;
 
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 
 public class Packet_HavestBase implements IPacket_ModBase {
-	public EntityPlayer _player = null;
+	public PlayerEntity _player = null;
 	public ItemStack itemstack = null;
 	public BlockPos _pos = null;
-	public IBlockState blockID = null;
+	public BlockState blockID = null;
 	public long nanoTime = 0L;
 	public LinkedList<BlockPos> position = new LinkedList();
 

@@ -12,21 +12,21 @@ import basashi.havall.network.Packet_Axe;
 import basashi.havall.network.Packet_HavestBase;
 import basashi.havall.network.Packet_PickAxe;
 import basashi.havall.network.Packet_Scop;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class McEventHandler{
 	public static final long attackHistoryDelayNanoTime = 15000000000L;
@@ -51,7 +51,7 @@ public class McEventHandler{
 		// ワールド情報、プレイヤー情報を取得
 		Minecraft minecraft = Minecraft.getInstance();
 		World world = minecraft.world;
-		EntityPlayerSP player = minecraft.player;
+		ClientPlayerEntity player = minecraft.player;
 		if (null == player) {
 			return;
 		}
@@ -67,7 +67,7 @@ public class McEventHandler{
 						i.remove();
 					} else {
 						Message_Packet packet;
-						IBlockState blockID1 = world.getBlockState(pkt._pos);
+						BlockState blockID1 = world.getBlockState(pkt._pos);
 						if ((null == blockID1) || (Blocks.AIR == blockID1.getBlock())) {
 							i.remove();
 							Item tool = (null==minecraft.player.getHeldItemMainhand())?null:minecraft.player.getHeldItemMainhand().getItem();
@@ -93,7 +93,7 @@ public class McEventHandler{
 		}
 	}
 
-	public static void onServerPacket(Message_Packet pkt, EntityPlayer player) {
+	public static void onServerPacket(Message_Packet pkt, PlayerEntity player) {
 		ItemStack itmstk = player.getHeldItemMainhand();
 		MyConfig.TOOLS tool;
 		if( (itmstk != null) &&((tool = MyConfig.getToolKind(itmstk.getItem()))!= MyConfig.TOOLS.OTHER) ){
@@ -115,7 +115,7 @@ public class McEventHandler{
 
 			p._player = player;
 			p.readPacketData(pkt.Data());
-			if (p._player.getDistance(p._pos.getX(), p._pos.getY(), p._pos.getZ()) > 6.0D) {
+			if (p._player.getDistanceSq(p._pos.getX(), p._pos.getY(), p._pos.getZ()) > 6.0D) {
 				return;
 			}
 			_serverPacket.offer(p);
@@ -123,7 +123,7 @@ public class McEventHandler{
 	}
 //	@SubscribeEvent
 //	public void onServerPacket(NetworkEvent.ServerCustomPayloadEvent event) {
-//		EntityPlayer player = event.getSource().get().getSender();
+//		PlayerEntity player = event.getSource().get().getSender();
 //		ItemStack itmstk = player.getHeldItemMainhand();
 //		MyConfig.TOOLS tool;
 //		if( (itmstk != null) &&((tool = MyConfig.getToolKind(itmstk.getItem()))!= MyConfig.TOOLS.OTHER) ){
@@ -169,13 +169,13 @@ public class McEventHandler{
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static void addAttackBlock(BlockPos pos, boolean clearHistory, IBlockState block, MyConfig.TOOLS tool) {
+	public static void addAttackBlock(BlockPos pos, boolean clearHistory, BlockState block, MyConfig.TOOLS tool) {
 		IHavest instance = getHavestInstance(tool);
 		if (clearHistory) {attackHistory.clear();}
 		if (instance == null){return;}
 
 		World world = Minecraft.getInstance().world;
-		EntityPlayer player = Minecraft.getInstance().player;
+		PlayerEntity player = Minecraft.getInstance().player;
 		if (null == block) {
 			block = world.getBlockState(pos);
 		}
@@ -214,20 +214,20 @@ public class McEventHandler{
 	@OnlyIn(Dist.CLIENT)
 	private void ToolEnable(Minecraft minecraft){
 		// ツールの有効無効処理
-		EntityPlayer player = minecraft.player;
+		PlayerEntity player = minecraft.player;
 		ItemStack itemstk= player.getHeldItemMainhand();
 		MyConfig.TOOLS tool = (itemstk!=null?MyConfig.getToolKind(itemstk.getItem()):MyConfig.TOOLS.OTHER);
 		if (StartMode && ((tool == MyConfig.TOOLS.OTHER) || (bftool != tool))){
 				StartMode = false;
 				bftool = tool;
-				player.sendStatusMessage(new TextComponentString("Havest OFF"),false);
+				player.sendStatusMessage(new StringTextComponent("Havest OFF"),false);
 		}else{
 			if (ClientProxy.Press_Key_Enable() && (minecraft.currentScreen == null)
 					&& (tool != MyConfig.TOOLS.OTHER)){
 				if (flag_change <= 0) {
 					StartMode = !StartMode;
 					bftool = tool;
-					minecraft.player.sendStatusMessage(new TextComponentString(
+					minecraft.player.sendStatusMessage(new StringTextComponent(
 							"Havest " + (StartMode?"ON":"OFF")),false);
 					this.flag_change = 10;
 				}
@@ -241,7 +241,7 @@ public class McEventHandler{
 	@OnlyIn(Dist.CLIENT)
 	private void BlockRegister(Minecraft minecraft){
 //		// ブロックの登録・解除処理
-//		EntityPlayer player = minecraft.player;
+//		PlayerEntity player = minecraft.player;
 //		ItemStack itemstk= player.getHeldItemMainhand();
 //		MyConfig.TOOLS tool = (itemstk!=null?MyConfig.getToolKind(itemstk.getItem()):MyConfig.TOOLS.OTHER);
 //
@@ -257,7 +257,7 @@ public class McEventHandler{
 //				// 視線の先のブロックを取得
 //				RayTraceResult pos = minecraft.world.rayTraceBlocks(vecPl, vecPs);
 //				if (pos != null && pos.getBlockPos() != null){
-//					IBlockState blkste = minecraft.world.getBlockState(pos.getBlockPos());
+//					BlockState blkste = minecraft.world.getBlockState(pos.getBlockPos());
 //					if(blkste != null){
 //						boolean result = MyConfig.addOrRemoveBlocks(itemstk.getItem(), blkste);
 //						minecraft.player.sendStatusMessage(new TextComponentString("Havest " +

@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.IRegistry;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class MyConfig {
@@ -60,7 +60,7 @@ public class MyConfig {
 		}
 	}
 
-	public static boolean CheckHavest(Item tool, IBlockState blk){
+	public static boolean CheckHavest(Item tool, BlockState blk){
 		Values ins = getToolClass(tool);
 		if ( ins != null){
 			return ins.checkBlock(blk);
@@ -123,7 +123,7 @@ public class MyConfig {
 					.define("ItemIds", "iron_shovel, wooden_shovel, stone_shovel, diamond_shovel, golden_shovel");
 			BlockIds = builder
 					.comment("target block ids")
-					.define("BlockIds", "grass_block, dirt, sand, gravel, farmland, snow_layer, clay, soul_sand, mycelium, coarse_dirt");
+					.define("BlockIds", "dirt,coarse_dirt,podzol,sand,red_sand,gravel,grass,clay,soul_sand,farmland,snow,snow_block,mycelium");
 			builder.pop();
 
 		}
@@ -142,7 +142,7 @@ public class MyConfig {
 		}
 
 		@Override
-		public boolean addOrRemoveBlock(IBlockState blkst){
+		public boolean addOrRemoveBlock(BlockState blkst){
 			// TODO: ゲーム側からコンフィグを書き換える方法が不明
 //			Block blk = blkst.getBlock();
 //			List<Object> wblockList = BlockId;
@@ -174,7 +174,7 @@ public class MyConfig {
 		}
 
 		@Override
-		public boolean checkBlock(IBlockState blk){
+		public boolean checkBlock(BlockState blk){
 			return isIdInList(blk.getBlock(), BlockId);
 		}
 	}
@@ -215,7 +215,7 @@ public class MyConfig {
 					.define("ItemIds", "iron_axe, wooden_axe, stone_axe, diamond_axe, golden_axe");
 			BlockIds = builder
 					.comment("target block ids")
-					.define("BlockIds","oak_log,spruce_log,birch_log,jungle_log,acacia_log,dark_oak_log,stripped_spruce_log,stripped_birch_log,stripped_jungle_log,stripped_acacia_log,stripped_dark_oak_log,stripped_oak_log,oak_wood,spruce_wood,birch_wood,jungle_wood,acacia_wood,dark_oak_wood,stripped_oak_wood,stripped_spruce_wood,stripped_birch_wood,stripped_jungle_wood,stripped_acacia_wood,stripped_dark_oak_wood");
+					.define("BlockIds","oak_log,spruce_log,birch_log,jungle_log,acacia_log,dark_oak_log,oak_wood,spruce_wood,birch_wood,jungle_wood,acacia_wood,dark_oak_wood,pumpkin,carved_pumpkin,melon");
 			NondestructiveItemIDs = builder
 					.comment("ignore block list")
 					.define("NondestructiveItemIDs", "");
@@ -252,7 +252,7 @@ public class MyConfig {
 		}
 
 		@Override
-		public boolean addOrRemoveBlock(IBlockState blkst){
+		public boolean addOrRemoveBlock(BlockState blkst){
 			// TODO : ゲーム側からコンフィグを書き換える方法が不明
 //			Block blk = blkst.getBlock();
 //			List<Object> wblockList = BlockId;
@@ -285,7 +285,7 @@ public class MyConfig {
 		}
 
 		@Override
-		public boolean checkBlock(IBlockState blk){
+		public boolean checkBlock(BlockState blk){
 			return isIdInList(blk.getBlock(), BlockId);
 		}
 	}
@@ -325,7 +325,7 @@ public class MyConfig {
 					.define("ItemIds",  "iron_pickaxe, wooden_pickaxe, stone_pickaxe, diamond_pickaxe, golden_pickaxe");
 			BlockIds = builder
 					.comment("target block id")
-					.define("BlockIds",  "gold_ore, iron_ore, coal_ore, lapis_ore, obsidian, diamond_ore, redstone_ore, glowstone, emerald_ore, nether_quartz_ore, granite, polished_granite, diorite, polished_diorite, andesite, polished_andesite");
+					.define("BlockIds",  "coal_ore,granite,polished_granite,diorite,polished_diorite,andesite,polished_andesite,gold_ore,iron_ore,coal_ore,lapis_ore,mossy_cobblestone,obsidian,diamond_ore,redstone_ore,ice,glowstone,emerald_ore,nether_quartz_ore,blue_ice");
 
 			builder.pop();
 		}
@@ -346,7 +346,7 @@ public class MyConfig {
 
 
 		@Override
-		public boolean addOrRemoveBlock(IBlockState blk){
+		public boolean addOrRemoveBlock(BlockState blk){
 			// TODO : ゲーム側からコンフィグを書き換える方法が不明
 //			List<Object> wblockList = BlockId;
 //			int idx = BlockId.indexOf(blk);
@@ -383,7 +383,7 @@ public class MyConfig {
 		}
 
 		@Override
-		public boolean checkBlock(IBlockState blk){
+		public boolean checkBlock(BlockState blk){
 			//return isIdInList(new BlockAndMetadata(blk.getBlock(),0), BlockId);
 			return isIdInList(blk.getBlock(), BlockId);
 		}
@@ -474,12 +474,12 @@ public class MyConfig {
 		List<Object> lst = new ArrayList();
 		String[] idslit = ids.split(",");
 		for (String id : idslit) {
-			Object blk = null;
+			Object obj = null;
 			id = id.trim();
 			if (!id.isEmpty()) {
-				blk = IRegistry.field_212618_g.get(new ResourceLocation(id));
+				obj = Registry.BLOCK.getOrDefault(new ResourceLocation(id));
 //				while(Block.BLOCK_STATE_IDS.iterator().hasNext()){
-//					IBlockState state = Block.BLOCK_STATE_IDS.iterator().next();
+//					BlockState state = Block.BLOCK_STATE_IDS.iterator().next();
 //					ResourceLocation location = state.getBlock().getRegistryName();
 //					// 完全一致か、ドメインがマインクラフトの場合名称だけ一致で判定
 //					if (id.equals(location.toString()) || ("minecraft:"+id).equals(location.toString())){
@@ -487,11 +487,12 @@ public class MyConfig {
 //						break;
 //					}
 //				}
-				if (Blocks.AIR.equals(blk)){
-					blk = IRegistry.field_212630_s.func_212608_b(new ResourceLocation(id));
+				if (Blocks.AIR == obj){
+					// iブロックじゃなければアイテム
+					obj = Registry.ITEM.getOrDefault(new ResourceLocation(id));
 				}
-				if ((null != blk) && (Blocks.AIR != blk)) {
-					lst.add(blk);
+				if ((null != obj) && (Blocks.AIR != obj)) {
+					lst.add(obj);
 				}
 			}
 		}

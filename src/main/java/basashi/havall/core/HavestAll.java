@@ -3,7 +3,7 @@ package basashi.havall.core;
 import basashi.havall.config.MyConfig;
 import basashi.havall.event.McEventHandler;
 import basashi.havall.network.Message_Packet;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.api.distmarker.Dist;
@@ -56,7 +56,7 @@ public class HavestAll {
     }
 
 	@OnlyIn(Dist.CLIENT)
-	public static void addAttackBlock(BlockPos pos, boolean clearHistory, IBlockState state, MyConfig.TOOLS tool){
+	public static void addAttackBlock(BlockPos pos, boolean clearHistory, BlockState state, MyConfig.TOOLS tool){
 		McEventHandler.addAttackBlock(pos,clearHistory,state,tool);
 	}
 

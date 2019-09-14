@@ -11,14 +11,14 @@ import basashi.havall.network.Message_Packet;
 import basashi.havall.network.Packet_HavestBase;
 import basashi.havall.network.Packet_Scop;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -61,7 +61,7 @@ public class HavestScop implements IHavest  {
 		return null;
 	}
 
-	public Packet_HavestBase makePacket(boolean blAdd, BlockPos pos, IBlockState blk, Packet_HavestBase pkt){
+	public Packet_HavestBase makePacket(boolean blAdd, BlockPos pos, BlockState blk, Packet_HavestBase pkt){
 		Packet_Scop retpkt;
 		if (pkt != null){
 			retpkt = (Packet_Scop)pkt;
@@ -101,7 +101,7 @@ public class HavestScop implements IHavest  {
 		return false;
 	}
 
-	public void startHavest(Packet_HavestBase pkt, EntityPlayer player) {
+	public void startHavest(Packet_HavestBase pkt, PlayerEntity player) {
 		Packet_Scop p = (Packet_Scop)pkt;
 		MinecraftServer server = player.getServer();
 		if (null != server) {
@@ -118,12 +118,12 @@ public class HavestScop implements IHavest  {
 		}
 	}
 
-	private boolean canDig(EntityPlayer player, Packet_Scop p) {
+	private boolean canDig(PlayerEntity player, Packet_Scop p) {
 		p.itemstack = player.getHeldItemMainhand();
 		if ((p.itemstack == null) || (p.blockID == null)) {
 			return false;
 		}
-		if ((Blocks.AIR == p.blockID) || (p.blockID == Blocks.BEDROCK)) {
+		if ((Blocks.AIR == p.blockID.getBlock()) || (p.blockID.getBlock() == Blocks.BEDROCK)) {
 			return false;
 		}
 		if (player.canHarvestBlock(p.blockID)) {
@@ -132,7 +132,7 @@ public class HavestScop implements IHavest  {
 		return false;
 	}
 
-	private void breakAll(World world, EntityPlayer player, Packet_Scop p) {
+	private void breakAll(World world, PlayerEntity player, Packet_Scop p) {
 		p.count_dig = 0;
 		checkConnection(world, p._pos, p);
 		while (breakBlock(world, player, p)) {}
@@ -181,7 +181,7 @@ public class HavestScop implements IHavest  {
 				for (int z2 = -zs; z2 <= ze; z2++) {
 					if (Math.abs(x2) + Math.abs(y2) + Math.abs(z2) == 1) {
 						BlockPos pos2 = pos.add(x2, y2, z2);
-						IBlockState block = world.getBlockState	(pos2);
+						BlockState block = world.getBlockState	(pos2);
 						int metadata1 = getMetaFromBlockState(block);
 						if (checkBlock(block.getBlock(), metadata1, p)) {
 							p.position.offer(pos2);
@@ -192,12 +192,12 @@ public class HavestScop implements IHavest  {
 		}
 	}
 
-	private boolean breakBlock(World world, EntityPlayer entityplayer, Packet_Scop p) {
+	private boolean breakBlock(World world, PlayerEntity entityplayer, Packet_Scop p) {
 		BlockPos pos = (BlockPos) p.position.poll();
 		if (pos == null) {
 			return false;
 		}
-		IBlockState block1 = world.getBlockState(pos);
+		BlockState block1 = world.getBlockState(pos);
 		int metadata1 = getMetaFromBlockState(block1);
 		if (checkBlock(block1.getBlock(), metadata1, p)) {
 			p.count_dig += 1;
@@ -210,7 +210,7 @@ public class HavestScop implements IHavest  {
 			}
 			world.setBlockState(pos, Blocks.AIR.getDefaultState());
 			if ((MyConfig._scop.DropGather.get()) || (MyConfig._scop.AutoCollect.get())) {
-				moveEntityItem(world, entityplayer, pos, p._pos);
+				moveItemEntity(world, entityplayer, pos, p._pos);
 			}
 			if (MyConfig._scop.Durability.get() == 2) {
 				p.itemstack.onBlockDestroyed(world, p.blockID, pos, entityplayer);
@@ -225,7 +225,7 @@ public class HavestScop implements IHavest  {
 		return true;
 	}
 
-	private void moveEntityItem(World world, EntityPlayer entityplayer, BlockPos from, BlockPos to) {
+	private void moveItemEntity(World world, PlayerEntity entityplayer, BlockPos from, BlockPos to) {
 		List<?> list = world.getEntitiesWithinAABBExcludingEntity(entityplayer,
 				new AxisAlignedBB(from.getX(), from.getY(), from.getZ(),
 						from.getX() + 1, from.getY() + 1, from.getZ() + 1));
@@ -234,13 +234,13 @@ public class HavestScop implements IHavest  {
 		}
 		for (Object o : list) {
 			Entity e = (Entity) o;
-			if (((e instanceof EntityItem)) && (e.isAlive())) {
+			if (((e instanceof ItemEntity)) && (e.isAlive())) {
 				e.setPosition(to.getX(), to.getY(), to.getZ());
 			}
 		}
 	}
 
-	private void stackItem(World world, EntityPlayer entityplayer, Packet_Scop p) {
+	private void stackItem(World world, PlayerEntity entityplayer, Packet_Scop p) {
 		List<?> list = world.getEntitiesWithinAABBExcludingEntity(entityplayer,
 				new AxisAlignedBB(p._pos.getX(), p._pos.getY(), p._pos.getZ(),
 						p._pos.getX() + 1.0D, p._pos.getY() + 1.0D, p._pos.getZ() + 1.0D));
@@ -249,14 +249,14 @@ public class HavestScop implements IHavest  {
 		}
 		for (int i = 0; i < list.size(); i++) {
 			Entity entity1 = (Entity) list.get(i);
-			if (((entity1 instanceof EntityItem)) && (entity1.isAlive())) {
-				EntityItem e1 = (EntityItem) entity1;
+			if (((entity1 instanceof ItemEntity)) && (entity1.isAlive())) {
+				ItemEntity e1 = (ItemEntity) entity1;
 				ItemStack e1Item = e1.getItem();
 				int itemDamage = e1Item.getDamage();
 				for (int j = i + 1; j < list.size(); j++) {
 					Entity entity2 = (Entity) list.get(j);
-					if (((entity2 instanceof EntityItem)) && (entity2.isAlive())) {
-						EntityItem e2 = (EntityItem) entity2;
+					if (((entity2 instanceof ItemEntity)) && (entity2.isAlive())) {
+						ItemEntity e2 = (ItemEntity) entity2;
 						ItemStack e2Item = e2.getItem();
 						int itemDamage1 = e2Item.getDamage	();
 						if ((e1Item.getItem() == e2Item.getItem	()) && (itemDamage == itemDamage1)) {
@@ -270,7 +270,7 @@ public class HavestScop implements IHavest  {
 		}
 	}
 
-	private void collectDrop(World world, EntityPlayer entityplayer, Packet_Scop p) {
+	private void collectDrop(World world, PlayerEntity entityplayer, Packet_Scop p) {
 		List<?> list = world.getEntitiesWithinAABBExcludingEntity(entityplayer,
 				new AxisAlignedBB(p._pos.getX() - 0.5D, p._pos.getY() - 0.5D,
 						p._pos.getZ() - 0.5D, p._pos.getX() + 1.5D, p._pos.getY() + 1.5D,
@@ -280,14 +280,14 @@ public class HavestScop implements IHavest  {
 		}
 		for (Object i : list) {
 			Entity entity = (Entity) i;
-			if (((entity instanceof EntityItem)) && (entity.isAlive())) {
-				((EntityItem) entity).setNoPickupDelay();
+			if (((entity instanceof ItemEntity)) && (entity.isAlive())) {
+				((ItemEntity) entity).setNoPickupDelay();
 				entity.onCollideWithPlayer(entityplayer);
 			}
 		}
 	}
 
-	private int getMetaFromBlockState(IBlockState blk) {
+	private int getMetaFromBlockState(BlockState blk) {
 		try {
 			return Block.getStateId(blk);
 		} catch (IllegalArgumentException e) {
@@ -317,11 +317,11 @@ public class HavestScop implements IHavest  {
 		return true;
 	}
 
-    public void destroyCurrentEquippedItem(EntityPlayer palyer)
+    public void destroyCurrentEquippedItem(PlayerEntity palyer)
     {
         ItemStack orig = palyer.getHeldItemMainhand();
         palyer.inventory.setInventorySlotContents(palyer.inventory.currentItem, (ItemStack)null);
-        net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(palyer, orig,EnumHand.MAIN_HAND);
+        net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(palyer, orig,Hand.MAIN_HAND);
     }
 
 
